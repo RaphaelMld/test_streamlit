@@ -1,0 +1,7 @@
+dataset,query_id,context,response_baseline,response_twsls
+MANTIS,q1,"""Historique de la conversation...""","""Réponse du modèle baseline""","""Réponse du modèle T-WSLS"""
+MANTIS,q2,"""Historique de la conversation...""","""Réponse du modèle baseline""","""Réponse du modèle T-WSLS"""
+MANTIS,q3,"""Historique de la conversation...""","""Réponse du modèle baseline""","""Réponse du modèle T-WSLS"""
+TREC,t1,"""Requête de l'utilisateur...""","""Document extrait par baseline""","""Document extrait par T-WSLS"""
+TREC,t2,"""Requête de l'utilisateur...""","""Document extrait par baseline""","""Document extrait par T-WSLS"""
+TREC,t3,"""Requête de l'utilisateur...""","""Document extrait par baseline""","""Document extrait par T-WSLS"""
