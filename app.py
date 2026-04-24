@@ -1,12 +1,32 @@
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import random
+import gspread
+from google.oauth2.service_account import Credentials
 
 st.set_page_config(page_title="Évaluation de Pertinence RI", layout="wide")
 
-# --- CONNEXION GOOGLE SHEETS ---
-conn = st.connection("gsheets", type=GSheetsConnection)
+# --- CONNEXION DIRECTE GSPREAD ---
+@st.cache_resource
+def get_worksheet():
+    # On récupère les identifiants depuis les Secrets Streamlit
+    creds_dict = st.secrets["connections"]["gsheets"]
+    
+    # On s'authentifie officiellement auprès de Google
+    credentials = Credentials.from_service_account_info(
+        creds_dict,
+        scopes=[
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive"
+        ]
+    )
+    client = gspread.authorize(credentials)
+    
+    # On ouvre le fichier cible
+    return client.open_by_url(creds_dict["spreadsheet"]).worksheet("Sheet1")
+
+# Initialisation de la connexion Google Sheets
+worksheet = get_worksheet()
 
 # --- CHARGEMENT DES QUESTIONS ---
 @st.cache_data
@@ -33,13 +53,9 @@ if st.session_state.user is None:
             st.session_state.user = user_input
             
             with st.spinner("Vérification de votre progression..."):
-                # On utilise gspread natif pour lire sans utiliser le cache
-                sheet_url = st.secrets["connections"]["gsheets"]["spreadsheet"]
-                worksheet = conn.client.open_by_url(sheet_url).worksheet("Sheet1")
+                # On lit les données directement pour ne rien écraser
                 all_records = worksheet.get_all_records()
-                
-                # On compte combien de questions l'utilisateur a déjà répondues
-                count = sum(1 for row in all_records if str(row.get('username')) == user_input)
+                count = sum(1 for row in all_records if str(row.get('username', '')) == user_input)
                 st.session_state.current_idx = count
                 
             st.rerun()
@@ -48,13 +64,12 @@ if st.session_state.user is None:
     st.stop()
 
 # --- LOGIQUE D'ENREGISTREMENT ---
-def save_to_gsheets(score_a, score_b):
+def save_score(score_a, score_b):
     order = st.session_state.random_order
     score_baseline = score_a if order[0] == 0 else score_b
     score_twsls = score_a if order[1] == 0 else score_b
     
     row = questions_df.iloc[st.session_state.current_idx]
-    
     
     new_row = [
         st.session_state.user,
@@ -65,17 +80,15 @@ def save_to_gsheets(score_a, score_b):
         "baseline" if order[0] == 0 else "twsls"
     ]
     
-    # On ajoute la ligne directement à la fin du fichier
-    sheet_url = st.secrets["connections"]["gsheets"]["spreadsheet"]
-    worksheet = conn.client.open_by_url(sheet_url).worksheet("Sheet1")
+    # Ajout instantané à la fin du fichier
     worksheet.append_row(new_row)
     
-    # Suite
+    # On passe à la suite
     st.session_state.current_idx += 1
     st.session_state.random_order = random.sample([0, 1], 2)
 
 # --- INTERFACE D'ÉVALUATION ---
-st.title(f"Évaluation : {st.session_state.user}")
+st.title(f"📊 Évaluation : {st.session_state.user}")
 total_q = len(questions_df)
 
 if st.session_state.current_idx < total_q:
@@ -103,7 +116,7 @@ if st.session_state.current_idx < total_q:
         s_b = st.select_slider("Note B :", options=[1,2,3,4,5], value=3, key=f"b{idx}")
 
     if st.button("Valider", type="primary", use_container_width=True):
-        save_to_gsheets(s_a, s_b)
+        save_score(s_a, s_b)
         st.rerun()
 else:
     st.success("Merci ! Vous avez complété toutes les évaluations.")
