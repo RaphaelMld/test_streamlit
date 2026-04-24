@@ -6,10 +6,9 @@ import random
 st.set_page_config(page_title="Évaluation de Pertinence RI", layout="wide")
 
 # --- CONNEXION GOOGLE SHEETS ---
-# Pour que cela marche, il faudra configurer les "Secrets" sur Streamlit Cloud
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-# --- CHARGEMENT DES QUESTIONS (Fichier local dans ton GitHub) ---
+# --- CHARGEMENT DES QUESTIONS ---
 @st.cache_data
 def load_questions():
     return pd.read_csv("questions.csv")
@@ -28,13 +27,21 @@ if 'random_order' not in st.session_state:
 if st.session_state.user is None:
     st.title("Plateforme d'Évaluation")
     user_input = st.text_input("Entrez votre nom ou identifiant pour commencer :")
+    
     if st.button("Démarrer l'évaluation"):
         if user_input:
             st.session_state.user = user_input
-            # Récupérer les données existantes pour voir si cet utilisateur a déjà commencé
-            existing_data = conn.read(worksheet="Sheet1")
-            user_results = existing_data[existing_data['username'] == user_input]
-            st.session_state.current_idx = len(user_results)
+            
+            with st.spinner("Vérification de votre progression..."):
+                # On utilise gspread natif pour lire sans utiliser le cache
+                sheet_url = st.secrets["connections"]["gsheets"]["spreadsheet"]
+                worksheet = conn.client.open_by_url(sheet_url).worksheet("Sheet1")
+                all_records = worksheet.get_all_records()
+                
+                # On compte combien de questions l'utilisateur a déjà répondues
+                count = sum(1 for row in all_records if str(row.get('username')) == user_input)
+                st.session_state.current_idx = count
+                
             st.rerun()
         else:
             st.error("Veuillez entrer un identifiant.")
@@ -48,27 +55,27 @@ def save_to_gsheets(score_a, score_b):
     
     row = questions_df.iloc[st.session_state.current_idx]
     
-    # Préparation de la nouvelle ligne
-    new_row = pd.DataFrame([{
-        "username": st.session_state.user,
-        "dataset": row['dataset'],
-        "query_id": row['query_id'],
-        "score_baseline": score_baseline,
-        "score_twsls": score_twsls,
-        "order_A": "baseline" if order[0] == 0 else "twsls"
-    }])
     
-    # Lecture, ajout et mise à jour sur Google Sheets
-    current_results = conn.read(worksheet="Sheet1")
-    updated_results = pd.concat([current_results, new_row], ignore_index=True)
-    conn.update(worksheet="Sheet1", data=updated_results)
+    new_row = [
+        st.session_state.user,
+        row['dataset'],
+        str(row['query_id']),
+        int(score_baseline),
+        int(score_twsls),
+        "baseline" if order[0] == 0 else "twsls"
+    ]
+    
+    # On ajoute la ligne directement à la fin du fichier
+    sheet_url = st.secrets["connections"]["gsheets"]["spreadsheet"]
+    worksheet = conn.client.open_by_url(sheet_url).worksheet("Sheet1")
+    worksheet.append_row(new_row)
     
     # Suite
     st.session_state.current_idx += 1
     st.session_state.random_order = random.sample([0, 1], 2)
 
 # --- INTERFACE D'ÉVALUATION ---
-st.title(f"📊 Évaluation : {st.session_state.user}")
+st.title(f"Évaluation : {st.session_state.user}")
 total_q = len(questions_df)
 
 if st.session_state.current_idx < total_q:
@@ -77,7 +84,7 @@ if st.session_state.current_idx < total_q:
     st.write(f"Question **{idx + 1}** sur {total_q}")
     
     curr_q = questions_df.iloc[idx]
-    with st.expander("🔍 Contexte de la requête", expanded=True):
+    with st.expander("Contexte de la requête", expanded=True):
         st.info(f"Dataset: {curr_q['dataset']}")
         st.code(curr_q['context'], language="text")
 
@@ -99,5 +106,4 @@ if st.session_state.current_idx < total_q:
         save_to_gsheets(s_a, s_b)
         st.rerun()
 else:
-    st.balloons()
     st.success("Merci ! Vous avez complété toutes les évaluations.")
