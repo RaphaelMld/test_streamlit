@@ -41,6 +41,7 @@ if 'user' not in st.session_state:
 if 'current_idx' not in st.session_state:
     st.session_state.current_idx = 0
 if 'random_order' not in st.session_state:
+    # 0 = Baseline, 1 = T-WSLS. On initialise le mélange pour la première question.
     st.session_state.random_order = random.sample([0, 1], 2)
 
 # --- ÉCRAN DE CONNEXION ---
@@ -55,6 +56,7 @@ if st.session_state.user is None:
             with st.spinner("Vérification de votre progression..."):
                 # On lit les données directement pour ne rien écraser
                 all_records = worksheet.get_all_records()
+                # On compte combien de questions cet utilisateur a déjà évaluées
                 count = sum(1 for row in all_records if str(row.get('username', '')) == user_input)
                 st.session_state.current_idx = count
                 
@@ -66,8 +68,16 @@ if st.session_state.user is None:
 # --- LOGIQUE D'ENREGISTREMENT ---
 def save_score(score_a, score_b):
     order = st.session_state.random_order
-    score_baseline = score_a if order[0] == 0 else score_b
-    score_twsls = score_a if order[1] == 0 else score_b
+    
+    if order[0] == 0:
+        score_baseline = score_a
+        score_twsls = score_b
+        modele_en_A = "baseline"
+    else:
+        # L'index 1 était en premier (A). Donc A = T-WSLS, B = Baseline
+        score_baseline = score_b
+        score_twsls = score_a
+        modele_en_A = "twsls"
     
     row = questions_df.iloc[st.session_state.current_idx]
     
@@ -75,20 +85,20 @@ def save_score(score_a, score_b):
         st.session_state.user,
         row['dataset'],
         str(row['query_id']),
-        int(score_baseline),
-        int(score_twsls),
-        "baseline" if order[0] == 0 else "twsls"
+        int(score_baseline),  
+        int(score_twsls),     
+        modele_en_A        
     ]
     
     # Ajout instantané à la fin du fichier
     worksheet.append_row(new_row)
     
-    # On passe à la suite
+    # On passe à la suite et on MÉLANGE à nouveau pour la prochaine question !
     st.session_state.current_idx += 1
     st.session_state.random_order = random.sample([0, 1], 2)
 
 # --- INTERFACE D'ÉVALUATION ---
-st.title(f"📊 Évaluation : {st.session_state.user}")
+st.title(f"Évaluation : {st.session_state.user}")
 total_q = len(questions_df)
 
 if st.session_state.current_idx < total_q:
@@ -98,25 +108,30 @@ if st.session_state.current_idx < total_q:
     
     curr_q = questions_df.iloc[idx]
     with st.expander("Contexte de la requête", expanded=True):
-        st.info(f"Dataset: {curr_q['dataset']}")
+        st.info(f"Dataset: {curr_q['dataset']} | Requête ID: {curr_q['query_id']}")
         st.code(curr_q['context'], language="text")
 
-    # Affichage A/B
+    # Affichage A/B anonymisé
     responses = [curr_q['response_baseline'], curr_q['response_twsls']]
     order = st.session_state.random_order
     
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader("Réponse A")
+        st.subheader("Document A")
+        # On affiche le document selon l'ordre mélangé
         st.write(responses[order[0]])
         s_a = st.select_slider("Note A :", options=[1,2,3,4,5], value=3, key=f"a{idx}")
+        
     with col2:
-        st.subheader("Réponse B")
+        st.subheader("Document B")
+        # On affiche l'autre document
         st.write(responses[order[1]])
         s_b = st.select_slider("Note B :", options=[1,2,3,4,5], value=3, key=f"b{idx}")
 
-    if st.button("Valider", type="primary", use_container_width=True):
+    st.markdown("---")
+    # Bouton de validation
+    if st.button("Valider mes notes", type="primary", use_container_width=True):
         save_score(s_a, s_b)
         st.rerun()
 else:
-    st.success("Merci ! Vous avez complété toutes les évaluations.")
+    st.success("Vous avez complété toutes les évaluations.")
