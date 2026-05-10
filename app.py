@@ -6,6 +6,13 @@ from google.oauth2.service_account import Credentials
 
 st.set_page_config(page_title="Évaluation de Pertinence RI", layout="wide")
 
+# --- CONSIGNES D'ÉVALUATION PAR DATASET ---
+DATASET_INSTRUCTIONS = {
+    "MANTIS": " **MANTIS (Recherche Conversationnelle) :** La requête est un historique de discussion. Jugez si le document apporte une réponse pertinente au *dernier message* de l'utilisateur, en tenant compte du contexte de la conversation.",
+    "QQP": " **QQP (Intentions Similaires) :** La requête est une question. Jugez si le document (qui est une autre question) a *exactement la même signification* et la même intention. Un score élevé signifie que les deux questions sont des doublons.",
+    "TREC": " **TREC 2020 (Recherche Web) :** La requête est une recherche internet standard. Jugez si le document (passage de texte) contient l'information exacte et directe pour répondre au besoin de l'utilisateur."
+}
+
 # --- CONNEXION DIRECTE GSPREAD ---
 @st.cache_resource
 def get_worksheet():
@@ -107,8 +114,16 @@ if st.session_state.current_idx < total_q:
     st.write(f"Question **{idx + 1}** sur {total_q}")
     
     curr_q = questions_df.iloc[idx]
-    with st.expander("Contexte de la requête", expanded=True):
-        st.info(f"Dataset: {curr_q['dataset']} | Requête ID: {curr_q['query_id']}")
+    
+    dataset_name = str(curr_q['dataset']).upper().strip()
+    
+    # Affichage des consignes spécifiques
+    if dataset_name in DATASET_INSTRUCTIONS:
+        st.info(DATASET_INSTRUCTIONS[dataset_name], icon="ℹ️")
+    else:
+        st.info(f"Dataset: {dataset_name} - Évaluez la pertinence du document par rapport à la requête.", icon="ℹ️")
+
+    with st.expander("Voir la requête à évaluer", expanded=True):
         st.code(curr_q['context'], language="text")
 
     # Affichage A/B anonymisé
