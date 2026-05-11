@@ -48,8 +48,11 @@ MANTIS,mantis_q9801,"""""""Thrice-Honored Father"""", """"Thrice-Honored Rulers"
 
  ""Thank you for your citations combining  """"thrice"""" with """"honored"""" or its near synonyms.I was hoping for a specific  formulaic origin, but I think we'll have to leave it as generic intensifier which gradually came to be used for this more specific purpose.""",Not enough information but I would assume they are good for peaks of 20 amps.,"Since these compounds virtually appear at the same time in the late sixteenth century, it’s doubtful there is a specific origin for _thrice honored_ beyond the conventions of polite and formal language of the day. The _Letter-Book_, from which I’ve added a few uses,  suggests thrice-compounds were quite common  among elite speakers."
 MANTIS,mantis_q16848,"""
-```
-library(lme4)library(merTools)data(sleepstudy)fm1 &lt;- lmer(Reaction ~ Days + (Days|Subject), data=sleepstudy)PI &lt;- predictInterval(merMod = fm1, newdata = sleepstudy,                  level = 0.95, n.sims = 1000,                  stat = """"median"""", type=""""linear.prediction"""",                  include.resid.var = TRUE)
+```text
+library(lme4)library(merTools)data(sleepstudy)fm1 <- lmer(Reaction ~ Days + (Days|Subject), data=sleepstudy)PI <- predictInterval(merMod = fm1, newdata = sleepstudy,
+                  level = 0.95, n.sims = 1000,
+                  stat = """"median"""", type=""""linear.prediction"""",
+                  include.resid.var = TRUE)
 ```
 My question is: is there a rule of thumb of what the value of `n.sims` should be?EDITMy data contains 20686 rows (i.e. 20686 response variables) and 20 predictors. For such dataset, how many bootstrap samples are required? Is there any plots or papers that I can refer to that explain the number of bootstrap samples as a function of data size?"" 
 
@@ -61,28 +64,74 @@ My question is: is there a rule of thumb of what the value of `n.sims` should be
 
  Okay. Thanks. My data contains 20686 rows (i.e. 20686 response variables) and 20 predictors. So what does your 2nd point mean in this context?","@vvv Your random number generation though correct is strange. You are generating a variable that can take on any value between 0 and ~370,000. Usually, we do not use such variables in models without transforming them somehow. The major point here is that statsmodel GLM behaves as one might expect. Most of the p-values at large sample sizes are greater than .05 (~95% of the p-values), if you repeat the process enough times.","P-values are usually reported on their own. If you want a confidence interval, try Bootstrapping. Re-sample the data, and compute the p-value. Repeat this many times and you get an approximate sampling distribution for $p$."
 MANTIS,mantis_q11398,"""I'm using this code, of @Loïc Dutrieux, to stack 8 Landsat bands. 
-```
-with rasterio.open(final_list[0]) as src0:   meta = src0.metawith rasterio.open('stack.tif', 'w', **meta) as dst:for id, layer in enumerate(final_list):    with rasterio.open(layer) as src1:        #the .astype(rasterio.int16) forces dtype to int16        dst.write_band(id + 1, src1.read(1).astype(rasterio.int16))
+```text
+with rasterio.open(final_list[0]) as src0:
+   meta = src0.meta
+with rasterio.open('stack.tif', 'w', **meta) as dst:
+for id, layer in enumerate(final_list):
+    
+with rasterio.open(layer) as src1:
+        #the .astype(rasterio.int16) forces dtype to int16
+        dst.write_band(id + 1, src1.read(1).astype(rasterio.int16))
 ```
 When I open the `stack.tif` with `gdalinfo` I'm not getting bands' description in the `Metadata`: 
-```
-...Metadata:AREA_OR_POINT=AreaImage Structure Metadata:...Band 1 Block=3596x1 Type=Int16, ColorInterp=GrayNoData Value=-9999Band 2 Block=3596x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999...
+```text
+...Metadata:
+AREA_OR_POINT=AreaImage Structure Metadata:...
+Band 1 Block=3596x1 Type=Int16, ColorInterp=GrayNoData Value=-9999
+Band 2 Block=3596x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999...
 ```
 I would like something similar to this:
-```
-...Metadata:Band_1=Band 1 ReflectanceBand_2=Band 2 ReflectanceBand_3=Band 3 ReflectanceBand_4=Band 4 ReflectanceBand_5=Band 5 ReflectanceBand_6=Band 7 ReflectanceBand_7=Band 6 TemperatureBand_8=FmaskImage Structure Metadata:...Band 1 Block=300x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999Band 2 Block=300x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999...
+```text
+...Metadata:
+Band_1=
+Band 1 ReflectanceBand_2=
+Band 2 ReflectanceBand_3=
+Band 3 ReflectanceBand_4=
+Band 4 ReflectanceBand_5=
+Band 5 ReflectanceBand_6=
+Band 7 ReflectanceBand_7=
+Band 6 TemperatureBand_8=FmaskImage Structure Metadata:...
+Band 1 Block=300x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999
+Band 2 Block=300x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999...
 ```
 "" 
 
 |||SPLIT|||
 
  If using rasterio >= 1.0, use the `dataset.set_band_description(self, bidx, value)` method and `dataset.descriptions` property.
-```
-Sets the description of a dataset band.Parameters----------bidx : int    Index of the band (starting with 1).value: string    A description of the band.
+```text
+Sets the description of a dataset band.Parameters----------bidx : int
+    Index of the band (starting 
+with 1).value: string
+    A description of the band.
 ```
 For example:
-```
-descriptions = [    'Band 1 Reflectance',     'Band 2 Reflectance',    'Band 3 Reflectance',    'Band 4 Reflectance',    'Band 5 Reflectance',    'Band 7 Reflectance',     'Band 6 Temperature']for id, layer in enumerate(final_list, start=1):    with rasterio.open(layer) as src1:        #the .astype(rasterio.int16) forces dtype to int16        dst.write_band(id, src1.read(1).astype(rasterio.int16))        # Assuming the source dataset band 1 has a description        dst.set_band_description(id, src1.descriptions[0])        # If not, you can put anything in you want        dst.set_band_description(id, descriptions[id-1])
+```text
+descriptions = [
+    '
+Band 1 Reflectance',
+     '
+Band 2 Reflectance',
+    '
+Band 3 Reflectance',
+    '
+Band 4 Reflectance',
+    '
+Band 5 Reflectance',
+    '
+Band 7 Reflectance',
+     '
+Band 6 Temperature']
+for id, layer in enumerate(final_list, start=1):
+    
+with rasterio.open(layer) as src1:
+        #the .astype(rasterio.int16) forces dtype to int16
+        dst.write_band(id, src1.read(1).astype(rasterio.int16))
+        # Assuming the source dataset band 1 has a description
+        dst.set_band_description(id, src1.descriptions[0])
+        # If not, you can put anything in you want
+        dst.set_band_description(id, descriptions[id-1])
 ```
  
 
@@ -116,23 +165,70 @@ MANTIS,mantis_q13058,"""There is a point charge inside a neutral conducting shel
 
  if the charge is at the centre of the shell, no force on the charge. if its not, everything changes.. is that correct?",@Abcd That conducting middle plate would have induced charges on its surface. If it did not there would be an electric field inside the **conducting** metal plate.,"@physicsguy19 Correct. If the charge isn't at the center of the shell, then it feels an radial force and gets attracted toward the nearest wall."
 MANTIS,mantis_q5024,"""I am at a bit of a loss.  I am able to perform an nslookup and a dig on the address """"imap.comcast.net"""" but if I try to ping it or connect to it from my application I get a """"Temporary failure in name resolution"""".  Something must be amiss in my DNS configuration but I am unsure what it is.
-```
-&gt; ping imap.comcast.netping: imap.comcast.net: Temporary failure in name resolution&gt; systemd-resolve --status --no-pagerGlobal          DNSSEC NTA: 10.in-addr.arpa                      16.172.in-addr.arpa                      168.192.in-addr.arpa                      17.172.in-addr.arpa                      18.172.in-addr.arpa                      19.172.in-addr.arpa                      20.172.in-addr.arpa                      21.172.in-addr.arpa                      22.172.in-addr.arpa                      23.172.in-addr.arpa                      24.172.in-addr.arpa                      25.172.in-addr.arpa                      26.172.in-addr.arpa                      27.172.in-addr.arpa                      28.172.in-addr.arpa                      29.172.in-addr.arpa                      30.172.in-addr.arpa                      31.172.in-addr.arpa                      corp                      d.f.ip6.arpa                      home                      internal                      intranet                      lan                      local                      private                      testLink 2 (ens3)      Current Scopes: DNS       LLMNR setting: yesMulticastDNS setting: no      DNSSEC setting: no    DNSSEC supported: no         DNS Servers: 10.0.0.2          DNS Domain: ec2.internal&gt; cat /etc/resolv.conf# This file is managed by man:systemd-resolved(8). Do not edit.## This is a dynamic resolv.conf file for connecting local clients to the# internal DNS stub resolver of systemd-resolved. This file lists all# configured search domains.## Run """"systemd-resolve --status"""" to see details about the uplink DNS servers# currently in use.## Third party programs must not access this file directly, but only through the# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,# replace this symlink by a static file or a different symlink.## See man:systemd-resolved.service(8) for details about the supported modes of# operation for /etc/resolv.conf.nameserver 127.0.0.53search ec2.internal
+```text
+ping imap.comcast.netping: imap.comcast.net: Temporary failure in name resolution> systemd-resolve --status --no-pagerGlobal
+          DNSSEC NTA: 10.in-addr.arpa
+                      16.172.in-addr.arpa
+                      168.192.in-addr.arpa
+                      17.172.in-addr.arpa
+                      18.172.in-addr.arpa
+                      19.172.in-addr.arpa
+                      20.172.in-addr.arpa
+                      21.172.in-addr.arpa
+                      22.172.in-addr.arpa
+                      23.172.in-addr.arpa
+                      24.172.in-addr.arpa
+                      25.172.in-addr.arpa
+                      26.172.in-addr.arpa
+                      27.172.in-addr.arpa
+                      28.172.in-addr.arpa
+                      29.172.in-addr.arpa
+                      30.172.in-addr.arpa
+                      31.172.in-addr.arpa
+                      corp
+                      d.f.ip6.arpa
+                      home
+                      internal
+                      intranet
+                      lan
+                      local
+                      private
+                      testLink 2 (ens3)
+      Current Scopes: DNS
+       LLMNR setting: yesMulticastDNS setting: no
+      DNSSEC setting: no
+    DNSSEC supported: no
+         DNS Servers: 10.0.0.2
+          DNS Domain: ec2.internal> cat /etc/resolv.conf# This file is managed by man:
+systemd-resolved(8). Do not edit.## This is a dynamic resolv.conf file 
+for connecting local clients to the# internal DNS stub resolver of systemd-resolved. This file lists all# configured search domains.## Run """"systemd-resolve --status"""" to see details about the uplink DNS servers# currently in use.## Third party programs must not access this file directly, but only through the# symlink at /etc/resolv.conf. To manage man:
+resolv.conf(5) in a different way,# replace this symlink by a static file or a different symlink.## See man:
+systemd-resolved.service(8) 
+for details about the supported modes of# operation 
+for /etc/resolv.conf.nameserver 127.0.0.53search ec2.internal
 ```
 Some more forensic information/etc/resolv.conf is a symlink as seen here
-```
-&gt; readlink -f /etc/resolv.conf/run/systemd/resolve/stub-resolv.conf
+```text
+readlink -f /etc/resolv.conf/run/systemd/resolve/stub-resolv.conf
 ```
 If I change the symlink and restart systemd.resolve I can ping the address but it appears to disable dns caching
-```
-&gt;sudo service systemd-resolved stop&gt;sudo rm -f /etc/resolv.conf&gt;sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf&gt;sudo service systemd-resolved start&gt;ping imap.comcast.net&gt;sudo systemd-resolve --statisticsDNSSEC supported by current servers: noTransactionsCurrent Transactions: 0  Total Transactions: 0Cache  Current Cache Size: 0          Cache Hits: 0        Cache Misses: 0DNSSEC Verdicts              Secure: 0            Insecure: 0               Bogus: 0       Indeterminate: 0
+```text
+>sudo service systemd-resolved stop>sudo rm -f /etc/resolv.conf>sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf>sudo service systemd-resolved start>ping imap.comcast.net>sudo systemd-resolve --statisticsDNSSEC supported by current servers: noTransactionsCurrent Transactions: 0
+  Total Transactions: 0Cache
+  Current Cache Size: 0
+          Cache Hits: 0
+        Cache Misses: 0DNSSEC Verdicts
+              Secure: 0
+            Insecure: 0
+               Bogus: 0
+       Indeterminate: 0
 ```
 "" 
 
 |||SPLIT|||
 
  ""I think I had this issue before. I used the first answer in this question to resolve it:Wrong nameserver set by resolvconf and NetworkManagerThe answer is to change the resolv.conf symlink:
-```
+```text
 sudo rm -f /etc/resolv.confsudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.confreboot
 ```
 "" 
@@ -158,15 +254,15 @@ S+T+U=(3P+Q-P'-Q')=2P,
 $$
  where I invoked momentum conservation.It can be shown that $S^2+T^2+U^2=P^2+Q^2+P'^2+Q'^2$, which equals $2(P^2+Q^2)$ in the elastic case.By squaring $T+U=2P-S=P-Q$ and isolating $2T\cdot U$,I get
 $$
-\begin{align}   2 T\cdot U &amp;=P^2-2P\cdot Q+Q^2 -[T^2+U^2]\\&amp;=P^2-2P\cdot Q+Q^2 -[2(P^2+Q^2)-S^2]\\&amp;=-P^2-2P\cdot Q-Q^2 +S^2\\&amp;=0\end{align}
+\begin{align}   2 T\cdot U &=P^2-2P\cdot Q+Q^2 -[T^2+U^2]\\&=P^2-2P\cdot Q+Q^2 -[2(P^2+Q^2)-S^2]\\&=-P^2-2P\cdot Q-Q^2 +S^2\\&=0\end{align}
 $$
 There's likely a simpler calculation with dot-products [without invoking Mandelstam] which might be suggested by the following energy-momentum diagram. (update: there is)Now here's an energy-momentum diagram, which suggests a simpler geometric interpretation.The 4-vector $U=P'-Q=P'-Q_{copy}$ is shown, connecting the tip of $Q_{copy}$ to $P'$.The momentum-transfer segment $T$ (connecting A and C), which is orthogonal to the total-momentum $S$, is actually bisected by $S$ when the collision is elastic... that is when $C$ (the tip of $P'$ and the tail of $Q'$) is at the intersection of the two mass-shells determined by $P$ and $Q$. So, this means that in the zero-momentum COM frame,the spatial part of $Q$ (which is projected onto half of $T$) is equal to the spatial part of $P'$ (which is projected onto the other half of $T$). Thus, the difference in their spatial components is zero.Thus, $U\cdot T=(P'-Q)\cdot T=P'\cdot T - Q\cdot T=P'_{x,COM}-Q_{x,COM}=0$.Okay, after writing this up and thinking about it some more... Here is a simpler calculation. (I'll leave the earlier stuff up there because it may be useful. It was to me.)
 $$
-\begin{align}0&amp;\stackrel{?}{=}U\cdot T\\&amp;=(P'-Q)\cdot T\\&amp;=(P'-[P'+Q'-P])\cdot T \qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\cdot T\\&amp;=(P'+P)\cdot T-[P'+Q']\cdot T\\&amp;=(P'+P)\cdot T- \qquad 0\qquad\quad \mbox{since $S\cdot T=0$}\\&amp;=(P'+P)\cdot (P-P')\\&amp;=P'^2-P^2\\&amp;=\qquad 0 \qquad  \qquad \qquad\qquad \mbox{since $P'^2=P^2$ for an elastic collision}\\\end{align}
+\begin{align}0&\stackrel{?}{=}U\cdot T\\&=(P'-Q)\cdot T\\&=(P'-[P'+Q'-P])\cdot T \qquad \mbox{invoking conservation}\\&=(P'+P-[P'+Q'])\cdot T\\&=(P'+P)\cdot T-[P'+Q']\cdot T\\&=(P'+P)\cdot T- \qquad 0\qquad\quad \mbox{since $S\cdot T=0$}\\&=(P'+P)\cdot (P-P')\\&=P'^2-P^2\\&=\qquad 0 \qquad  \qquad \qquad\qquad \mbox{since $P'^2=P^2$ for an elastic collision}\\\end{align}
 $$
 One more update. I think the following variant of the last calculation constructs $U$ as a multiple of $S$:
 $$
-\begin{align}U&amp;=(P'-Q)\\&amp;=(P'-[P'+Q'-P])\qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\\&amp;=(P'+P)-[P'+Q']\\&amp;=(P'+P) -S\qquad\qquad\quad \mbox{since $S=P'+Q'$}\\\end{align}
+\begin{align}U&=(P'-Q)\\&=(P'-[P'+Q'-P])\qquad \mbox{invoking conservation}\\&=(P'+P-[P'+Q'])\\&=(P'+P)-[P'+Q']\\&=(P'+P) -S\qquad\qquad\quad \mbox{since $S=P'+Q'$}\\\end{align}
 $$
 Since $P'$ and $P$ are future-pointing timelike, then so is $(P'+P)$. For an elastic collision $(P'+P)$ is a multiple of $S$, because of symmetry [recall $P^2=P'^2$ for an elastic collision]... and it seems we need that $P$, $P'$, and $S$ are coplanar.From the diagram, $(P'+P)$ has magnitude $2P\cosh\theta_{PS}$, where $\theta$ is the rapidity between $P$ and $S$.So, it seems (assuming no errors in the calculation and the diagram) that since $S$ has magnitude $P\cosh\theta_{PS}+Q\cosh\theta_{QS}$, then, for an elastic collision [with $P$, $P'$,and $S$ coplanar],$U$ is a multiple of $S$ and$U$ has magnitude $| P\cosh\theta_{PS}-Q\cosh\theta_{QS}|$, the difference of the relativistic-energies-in-the-COM-frame."" 
 
@@ -174,11 +270,11 @@ Since $P'$ and $P$ are future-pointing timelike, then so is $(P'+P)$. For an ela
 
  I still have one question:if $U\cdot T$ and $S\cdot T$ is $0$, how do you conclude that U and S are parallel? What do you mean by parallel?","I'm presuming that all of these 4-vectors are in the same plane... like in a typical spacetime diagram with one-spatial dimension. By parallel in the plane, I mean that S and U are proportional, multiples of each other: $\tilde U=k \tilde S$.","Yes, you want me to use that state, instead? The eigenvalue of $\sigma_1\cdot \sigma_2$ is the same for each state of the triplet. It's only the first term that notices its alignment, and hence labeling of its states."
 MANTIS,mantis_q17362,"""I want to isolate gender differences in preferences for a particular attribute of a product based on data available about their product purchases. I understand that I have to use a mixed Poisson regression model as in my data - (1) I have same person buying multiple products (also, a given product might be bought by several people); and (2) the product attribute I am interested is a count variable. I am using the below model in `R` - 
-```
+```text
 glmer(p1 ~ gender + (1|personID), family=poisson)
 ```
 In this model, how should I control for the effects of other product attributes (e.g., `price`)? In essence, I want to say something to the effect of """"women prefer products that are high on `p1` more than do men, even after controlling for price of the products""""?  Would the below modification to the model take care of all other product attributes?
-```
+```text
 glmer(p1 ~ gender + (1|personID) + (1|product), family=poisson)
 ```
 "" 
@@ -191,8 +287,9 @@ glmer(p1 ~ gender + (1|personID) + (1|product), family=poisson)
 
  Thank you very much. I will explore GEE and Quasi-Poisson. But I still don't exactly get what is incorrect with the current `glmer` Poisson model specification. Could I not simply look at the coefficient of `gender` in the mixed model and its significance to make inferences about gender differences? Please let me know. A second concern that remains is, with respect to adding `price` as co-variate/control variable. Does it not imply that I am trying to say that price predicts `p1`? How do I say that it is not on price, but p1 that gender differences exist?","""@Mike, *"""" I'm assuming height matters for males, but not females, and weight matters for females, but not males.""""* In that case, do not call that product term """"interaction"""" because it's actually not. And also be aware that i) your model constraints the association very severely and before fitting so, double check with exploratory data analysis; ii) according to your model, height matters to male and female matters to female may not actually be true, it's just because you model them that way.""","@762 Yes, for the dependent variable,  depending on the numbers you may want to fit a Poisson model (which would be a GLMM), though if the numbers are large and well approximated by a normal distribution, a LMM may be adequate, If you refer to independent variables, they should be handled automatically. Take a look at the 2 references I gave to my answer [here](https://stats.stackexchange.com/questions/386474/what-is-the-joint-density-function-of-a-three-level-mixed-effects-model) which are both  by the authors of the `lme4` package"
 MANTIS,mantis_q11173,"I have a table of points.Each row has a string `hex` field that stores a color code in hex format: `#000000`. I want to style my map so that each point displays with the color assigned to it.  But setting the CartoCSS `marker-fill` property to `[hex]` throws an error:
-```
- #points {   marker-fill: [hex]; }
+```text
+#points {
+   marker-fill: [hex]; }
 ```
 Is there any way that I can color my points based on a color field in my table? 
 
@@ -204,15 +301,16 @@ Is there any way that I can color my points based on a color field in my table?
 
  ""I have updated my example, which I typed incorrectly. But my production code includes a semicolon, and still throws an error: """"style0:3:2 Invalid value for marker-fill, the type color is expected. [hex] (of type field) was given.""""""",Can you share the link to your dataset? It should work both in Engine apps (as seen in my first screenshot) and in BUILDER (as in the new pictures added to my answer).,It's probably just  another way of color coding..If my answer works for you please accept it by clicking on the tick mark
 MANTIS,mantis_q2242,"""I'm very new in Ubuntu. I'm trying to upgrade my texlive in ubuntu 16.04 from 2015 to 2017 following this instruction. I have added these 2 file to my source list :
-```
-deb http://ppa.launchpad.net/jonathonf/texlive-2017/ubuntu xenial main deb-src http://ppa.launchpad.net/jonathonf/texlive-2017/ubuntu xenial main 
+```text
+deb http://ppa.launchpad.net/jonathonf/texlive-2017/ubuntu xenial main deb-src http://ppa.launchpad.net/jonathonf/texlive-2017/ubuntu xenial main
 ```
 And I run  `sudo apt-get update` successfully !but in next step I'm facing with error :
-```
-sudo add-apt-repository ppa:jonathonf/texlive-2017Cannot add PPA: 'ppa:~jonathonf/ubuntu/texlive-2017'.ERROR: '~jonathonf' user or team does not exist.
+```text
+sudo add-apt-repository ppa:
+jonathonf/texlive-2017Cannot add PPA: 'ppa:~jonathonf/ubuntu/texlive-2017'.ERROR: '~jonathonf' user or team does not exist.
 ```
 I did also :
-```
+```text
 sudo apt-get install --reinstall ca-certificates
 ```
 and repeat the process but no chance ! Would be grateful if somebody could help ?!"" 
@@ -220,8 +318,9 @@ and repeat the process but no chance ! Would be grateful if somebody could help 
 |||SPLIT|||
 
  ""You need not add the PPA twice. The easy way is via `add-apt-repository`. You find the PPA at this link,launchpad.net/~jonathonf/+archive/ubuntu/texlive-2017and it describes how to use it,
-```
-sudo add-apt-repository ppa:jonathonf/texlive-2017sudo apt-get update
+```text
+sudo add-apt-repository ppa:
+jonathonf/texlive-2017sudo apt-get update
 ```
 These commands work for me (I tested in 16.04.1 LTS - live). Maybe there was a temporary glitch. Maybe there was an error because you try to add the PPA twice."" 
 
@@ -240,7 +339,7 @@ Is there an efficient way to load my `R` and `S` files in memory (ideally cachin
 
 |||SPLIT|||
 
- ""This is too long for a comment, but it is not the answer to your issues.Unfortunately, there is no avoiding that bottleneck.You could theoretically set limits to the calculation ranges by point numbers (Line &amp; Station,  or  Track &amp; Bin) if you know the spacing, and make general assumptions with regards to the distance from a receiver point to a source point based upon station interval, and line spacingYou obviously know the following, but I will expound on it anyway.You are going to have two loops, or do while statements.One will fetch each receiver point (R File), storing the coordinate values, and other pertinent information.The second loop will fetch each source point (S File), calculate the inverse or ray distance, and also take the x, and y coordinates of both points, sum the x values and the y values then divide each sum by 2 to derive the mid point coordinates.I would also take the inverse or ray distance, and divide this by two, this will give you the depth of the record, and I would calculate the azimuth of the ray. Then write all of these values to another file. (The relations or X file).So in the third file I would write the Receiver Point Number, Source Point Number, MidpointX, MidpointY, Radial_distance, Half_Distance, Azimuth.You could add other info if you needed to such as Receiver Coordinates, and Source Coordinates, Preplot or Postplot Designators and so on.Then after each source point has been looped through, you return to the receiver point file, fetch the next one (first loop), then repeat the process with the source points (second loop) until all of the points in both files are looped through.It is very calculation intensive, but the math is simple for the most part.Optimization of the loops is one of the most important things here.On a seismic grid with 8000 receiver points, and 8000 source points, you will have 64,000,000 mid point locations, and in all honesty, that is not a very intense grid compared to some I have worked on.The rest of this is not meant to discourage you, but I see the road you are taking, and it will progress to the following.There is a lot more fun to be had when you start to analyze azimuthal distribution, and create spider graphs for each bin. Then querying specific depth ranges for fold.Other fun will be the blending of surveyed locations with unsurveyed locations for design purposes and to avoid the striping of the data.It can then turn into something even more mind boggling when you start turning off specific points within the grid, and have to regenerate the counts for the mid point locations within specific bins based upon the loss of these points.Have as much fun with this as you can.Take small steps, and work on optimizing the loops first.So in a follow up to this, out of morbid curiosity, insanity, and stubbornness, I decided to try this using only the core tools, and processing tools contained within QGIS 3.4.3.I will not go into full step by step details, but I started by using the regular points generator, and built a grid of points on a 220 ft. by 220 ft. grid for both receiver points, and source points. I then rotated both grids using the processing toolbox rotate function.After that I built a polygon grid of 110 ft by 110 ft, and then translated and rotated the grid so the points were centered within the polygons.I then queried out the desired points from the receiver and source point files.Then I ran the Distance Matrix utility from the Vector Menu (it is also part of the Processing Toolbox)This created a record for each point on the Receiver Point Grid related to each point on the Source Point Grid.In all there are 3,128,160 combinations.The distance matrix file gives you an input and target point id, and the distance between the two points, which in many cases was found to be erroneous unless I am misunderstanding what is happening there.I then joined the receiver point file with the distance matrix file exporting the coordinates of the receiver points associated with the file.I repeated the above process using, this time joining the source point file with exported file.From there I added a mid point x and y field, as well as a mid point distance field, and updated those fields using the SQL functions.This was a very time consuming process with frequent crashes along the way.I attempted this using both shape files, and spatialite files. The spatialite files seemed to be more stable at least initially. (After each crash, I rebooted the computer.)I took the file with the calculated midpoint data, and exported a CSV file of containing the Receiver Point ID, Source Point ID, Mid Point X, Mid Point Y, and the Mid Point Distance.I then opened Mid Point CSV file, and exported it as a Spatialite file.The point count was correct, however there seems to be an error in the coordinates as some of the points fall outside of the boundary of the Bin Grid.I have not tracked this error down as of yet by comparing the joined receiver and source grid coordinates with the original coordinates, that is next on my list.Out of curiosity I decided to calculate a full fold map with what I came up with. I knew it would be wrong, but I wanted to see how long it would take counting the points in polygons. (Using the first run shape files)It took a little over eight hours using the Points in Polygons routine.I am not going to run it again using the spatialite files until I solve the rotational issues which is apparent in both the shape files of the first run, and the spatialite files of the second run.I am still having problems wrapping my head around using Python and looping through both the receiver and source point files staying with a single point in the receiver file while calculating mid points and distances to each source point from that receiver point, then moving to the next receiver point and repeating this process until all points are calculated.The rest of the math is easy, but the looping thing has given me fits.All I want to write out to a CSV file is the Receiver Point ID, Source Point ID, Mid Point X &amp; Y coordinates, and the Distance or Depth.  That is the easy part for me so far.Given what I have experienced with the above experiment, I hope you have a truly monstrous computer, huge hard drives, and a ridiculous amount of RAM, along with an inordinate amount of patience."" 
+ ""This is too long for a comment, but it is not the answer to your issues.Unfortunately, there is no avoiding that bottleneck.You could theoretically set limits to the calculation ranges by point numbers (Line & Station,  or  Track & Bin) if you know the spacing, and make general assumptions with regards to the distance from a receiver point to a source point based upon station interval, and line spacingYou obviously know the following, but I will expound on it anyway.You are going to have two loops, or do while statements.One will fetch each receiver point (R File), storing the coordinate values, and other pertinent information.The second loop will fetch each source point (S File), calculate the inverse or ray distance, and also take the x, and y coordinates of both points, sum the x values and the y values then divide each sum by 2 to derive the mid point coordinates.I would also take the inverse or ray distance, and divide this by two, this will give you the depth of the record, and I would calculate the azimuth of the ray. Then write all of these values to another file. (The relations or X file).So in the third file I would write the Receiver Point Number, Source Point Number, MidpointX, MidpointY, Radial_distance, Half_Distance, Azimuth.You could add other info if you needed to such as Receiver Coordinates, and Source Coordinates, Preplot or Postplot Designators and so on.Then after each source point has been looped through, you return to the receiver point file, fetch the next one (first loop), then repeat the process with the source points (second loop) until all of the points in both files are looped through.It is very calculation intensive, but the math is simple for the most part.Optimization of the loops is one of the most important things here.On a seismic grid with 8000 receiver points, and 8000 source points, you will have 64,000,000 mid point locations, and in all honesty, that is not a very intense grid compared to some I have worked on.The rest of this is not meant to discourage you, but I see the road you are taking, and it will progress to the following.There is a lot more fun to be had when you start to analyze azimuthal distribution, and create spider graphs for each bin. Then querying specific depth ranges for fold.Other fun will be the blending of surveyed locations with unsurveyed locations for design purposes and to avoid the striping of the data.It can then turn into something even more mind boggling when you start turning off specific points within the grid, and have to regenerate the counts for the mid point locations within specific bins based upon the loss of these points.Have as much fun with this as you can.Take small steps, and work on optimizing the loops first.So in a follow up to this, out of morbid curiosity, insanity, and stubbornness, I decided to try this using only the core tools, and processing tools contained within QGIS 3.4.3.I will not go into full step by step details, but I started by using the regular points generator, and built a grid of points on a 220 ft. by 220 ft. grid for both receiver points, and source points. I then rotated both grids using the processing toolbox rotate function.After that I built a polygon grid of 110 ft by 110 ft, and then translated and rotated the grid so the points were centered within the polygons.I then queried out the desired points from the receiver and source point files.Then I ran the Distance Matrix utility from the Vector Menu (it is also part of the Processing Toolbox)This created a record for each point on the Receiver Point Grid related to each point on the Source Point Grid.In all there are 3,128,160 combinations.The distance matrix file gives you an input and target point id, and the distance between the two points, which in many cases was found to be erroneous unless I am misunderstanding what is happening there.I then joined the receiver point file with the distance matrix file exporting the coordinates of the receiver points associated with the file.I repeated the above process using, this time joining the source point file with exported file.From there I added a mid point x and y field, as well as a mid point distance field, and updated those fields using the SQL functions.This was a very time consuming process with frequent crashes along the way.I attempted this using both shape files, and spatialite files. The spatialite files seemed to be more stable at least initially. (After each crash, I rebooted the computer.)I took the file with the calculated midpoint data, and exported a CSV file of containing the Receiver Point ID, Source Point ID, Mid Point X, Mid Point Y, and the Mid Point Distance.I then opened Mid Point CSV file, and exported it as a Spatialite file.The point count was correct, however there seems to be an error in the coordinates as some of the points fall outside of the boundary of the Bin Grid.I have not tracked this error down as of yet by comparing the joined receiver and source grid coordinates with the original coordinates, that is next on my list.Out of curiosity I decided to calculate a full fold map with what I came up with. I knew it would be wrong, but I wanted to see how long it would take counting the points in polygons. (Using the first run shape files)It took a little over eight hours using the Points in Polygons routine.I am not going to run it again using the spatialite files until I solve the rotational issues which is apparent in both the shape files of the first run, and the spatialite files of the second run.I am still having problems wrapping my head around using Python and looping through both the receiver and source point files staying with a single point in the receiver file while calculating mid points and distances to each source point from that receiver point, then moving to the next receiver point and repeating this process until all points are calculated.The rest of the math is easy, but the looping thing has given me fits.All I want to write out to a CSV file is the Receiver Point ID, Source Point ID, Mid Point X & Y coordinates, and the Distance or Depth.  That is the easy part for me so far.Given what I have experienced with the above experiment, I hope you have a truly monstrous computer, huge hard drives, and a ridiculous amount of RAM, along with an inordinate amount of patience."" 
 
 |||SPLIT|||
 
@@ -290,58 +389,301 @@ MANTIS,mantis_q5073,"""The last upgrading from Mozilla Firefox has a lost button
 
 |||SPLIT|||
 
- ""A shortcut still present in Firefox 64 is to press Control+Shift+Delete at the same time to bring up the Clear Recent History window. Alternatively, open Preferences > Privacy &amp; Security > History.Carefully select what you want to clear by ticking or unticking the relevant boxes. Then, click on the dropdown next to Time range to clear and choose Everything:"" 
+ ""A shortcut still present in Firefox 64 is to press Control+Shift+Delete at the same time to bring up the Clear Recent History window. Alternatively, open Preferences > Privacy & Security > History.Carefully select what you want to clear by ticking or unticking the relevant boxes. Then, click on the dropdown next to Time range to clear and choose Everything:"" 
 
 |||SPLIT|||
 
  In my system the [CONTROL]+[SHIFT]+[DELETE] combination gives me a session restart! Nothing related with Firefox!","In that case, just follow the method you use to reach the *Preferences > Privacy > History* section. Do you then not see the image above?","""@rahi Works pretty well for me: https://i.stack.imgur.com/NaEIO.png. Should not be necessary, but try changing the `""""name:""""` too in `metadata.json`."""
 MANTIS,mantis_q6371,"I want the parameters in Age and Gender to accept more than one value
-```
-    Create Procedure [Admission].[SelectPlayerData]@MembershipNumber varchar(20),@PlayerName varchar(70),@PlayerNameEnglish varchar(70),@Age varchar(200),@Gender varchar(100),@Mobile1 varchar(20),@Mobile2 varchar(20)asset nocount onbegin Declare @BaseQuery nvarchar(max) ='SELECT        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,                          Evaluation.Players.Mobile1, Evaluation.Players.Mobile2FROM            Evaluation.Players INNER JOIN                         Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'    , @ParamList nvarchar(max) = N'@p1 varchar(20), @p2 varchar(70), @p3 varchar(70),@p4 varchar(200), @p5 varchar(100), @p6 varchar(20) , @p7 varchar(20)'    , @WhereClause nvarchar(max) = ' WHERE 1=1';IF @MembershipNumber IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = @p1';    ENDIF @PlayerName IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = @p2';    ENDIF @PlayerNameEnglish IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = @p3';    ENDIF @Age IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in (@p4)';    ENDIF @Gender IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in (@p5)';    END    IF @Mobile1 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = @p6';    END    IF @Mobile2 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = @p7';    END    SET @BaseQuery = @BaseQuery + @WhereClause;    EXECUTE sp_executesql @BaseQuery, @ParamList,     @p1 = @MembershipNumber,     @p2 = @PlayerName,     @p3 = @PlayerNameEnglish,     @p4 = @Age,     @p5 = @Gender,     @p6 = @Mobile1,     @p7 = @Mobile2;end         
+```text
+Create Procedure [Admission].[SelectPlayerData]@MembershipNumber varchar(20),@PlayerName varchar(70),@PlayerNameEnglish varchar(70),@Age varchar(200),@Gender varchar(100),@Mobile1 varchar(20),@Mobile2 varchar(20)asset nocount onbegin Declare @BaseQuery nvarchar(max) ='SELECT
+        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,
+                          Evaluation.Players.Mobile1, Evaluation.Players.Mobile2FROM
+            Evaluation.Players INNER JOIN
+                         Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'
+    , @ParamList nvarchar(max) = N'@p1 varchar(20), @p2 varchar(70), @p3 varchar(70),@p4 varchar(200), @p5 varchar(100), @p6 varchar(20) , @p7 varchar(20)'
+    , @WhereClause nvarchar(max) = ' WHERE 1=1';IF @MembershipNumber IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = @p1';
+    ENDIF @PlayerName IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = @p2';
+    ENDIF @PlayerNameEnglish IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = @p3';
+    ENDIF @Age IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in (@p4)';
+    ENDIF @Gender IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in (@p5)';
+    END
+    IF @Mobile1 IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = @p6';
+    END
+    IF @Mobile2 IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = @p7';
+    END
+    SET @BaseQuery = @BaseQuery + @WhereClause;
+    EXECUTE sp_executesql @BaseQuery, @ParamList,
+     @p1 = @MembershipNumber,
+     @p2 = @PlayerName,
+     @p3 = @PlayerNameEnglish,
+     @p4 = @Age,
+     @p5 = @Gender,
+     @p6 = @Mobile1,
+     @p7 = @Mobile2;end
 ```
 the following execution does not work properly
-```
-USE [SportsActivities]GODECLARE @return_value intEXEC    @return_value = [Admission].[SelectPlayerData]        @MembershipNumber = NULL,        @PlayerName = NULL,        @PlayerNameEnglish = NULL,        @Age = N'12,14',        @Gender = N'Male,Female',        @Mobile1 = NULL,        @Mobile2 = NULLSELECT  'Return Value' = @return_valueGO
+```text
+USE [SportsActivities]GODECLARE @return_value intEXEC
+    @return_value = [Admission].[SelectPlayerData]
+        @MembershipNumber = NULL,
+        @PlayerName = NULL,
+        @PlayerNameEnglish = NULL,
+        @Age = N'12,14',
+        @Gender = N'Male,Female',
+        @Mobile1 = NULL,
+        @Mobile2 = NULLSELECT
+  'Return Value' = @return_valueGO
 ```
  
 
 |||SPLIT|||
 
  ""I think that you need to split up the male + female values, so you can add the ' and the comma's characters for each gender. If you are on sql 2016 you could use string split:Example for SQL Server 2016 and up:
-```
+```text
 DECLARE @gender nvarchar(255)= N'Male,Female';DECLARE @genderlist nvarchar(1000);SET @genderlist=(select ''''+ value+''',' from string_split(@Gender,',')FOR XML PATH(''));select @genderlist = left(@genderlist,len(@genderlist)-1);select @genderlist;
 ```
 SQL Server 2012 Example
-```
-declare @gender nvarchar(255)= N'Male,Female'declare @genderlist nvarchar(1000)declare @genderlist2 table (genders nvarchar(1000))declare @temp intINSERT INTO @genderlist2(genders)SELECT Split.a.value('.', 'NVARCHAR(MAX)')  as aFROM(    SELECT CAST('&lt;X&gt;'+REPLACE(@Gender, ',', '&lt;/X&gt;&lt;X&gt;')+'&lt;/X&gt;' AS XML) AS String) AS ACROSS APPLY String.nodes('/X') AS Split(a) set @genderlist=(select ''''+genders+''',' from @genderlist2for xml path(''))select @genderlist = left(@genderlist,len(@genderlist)-1);select @genderlist
+```text
+declare @gender nvarchar(255)= N'Male,Female'declare @genderlist nvarchar(1000)declare @genderlist2 table (genders nvarchar(1000))declare @temp intINSERT INTO @genderlist2(genders)SELECT Split.a.value('.', 'NVARCHAR(MAX)')
+  as aFROM(
+    SELECT CAST('<X>'+REPLACE(@Gender, ',', '</X><X>')+'</X>' AS XML) AS String) AS ACROSS APPLY String.nodes('/X') AS Split(a) set @genderlist=(select ''''+genders+''',' from @genderlist2
+for xml path(''))select @genderlist = left(@genderlist,len(@genderlist)-1);select @genderlist
 ```
 SourceAnother issue apart from splitting your string: One other issue found, is that you need to keep the variables out of the where string created, otherwise the variable will not change to what it is holding. E.G. @p4 would have stayed @p4 instead of parsing to 12,14. I changed it to @Age in my example.SQL Server 2012 Full procedure 
-```
-   ALTER Procedure [Evaluation].[SelectPlayerData]    @MembershipNumber varchar(20),    @PlayerName varchar(70),    @PlayerNameEnglish varchar(70),    @Age varchar(200),    @Gender varchar(100),    @Mobile1 varchar(20),    @Mobile2 varchar(20)    as    set nocount on    begin     Declare @BaseQuery nvarchar(max)     ='SELECT        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,                              Evaluation.Players.Mobile1, Evaluation.Players.Mobile2    FROM            Evaluation.Players INNER JOIN                             Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'        , @ParamList nvarchar(max) = N'@MembershipNumber varchar(20), @PlayerName varchar(70), @PlayerNameEnglish varchar(70),@Age varchar(200), @Gender varchar(100), @Mobile1 varchar(20) , @Mobile2 varchar(20)'        , @WhereClause nvarchar(max) = ' WHERE 1=1';    IF @MembershipNumber IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = '+@MembershipNumber+'';        END    IF @PlayerName IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = '+@PlayerName+'';        END    IF @PlayerNameEnglish IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = '+@PlayerNameEnglish+'';        END    IF @Age IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in ('+@Age+')';        END    IF @Gender IS NOT NULL        BEGIN        declare @genderlist nvarchar(1000)        declare @genderlist2 table (genders nvarchar(1000))        declare @temp int        INSERT INTO @genderlist2(genders)        SELECT Split.a.value('.', 'NVARCHAR(MAX)')  as a        FROM        (            SELECT CAST('&lt;X&gt;'+REPLACE(@Gender, ',', '&lt;/X&gt;&lt;X&gt;')+'&lt;/X&gt;' AS XML) AS String        ) AS A        CROSS APPLY String.nodes('/X')         AS Split(a)         set @genderlist=(        select ''''+genders+''',' from @genderlist2        for xml path(''))        select @genderlist = left(@genderlist,len(@genderlist)-1);            SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in ('+@genderlist+')';        END        IF @Mobile1 IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = '+@Mobile1+'';        END        IF @Mobile2 IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = '+@Mobile2+'';        END        SET @BaseQuery = @BaseQuery + @WhereClause;       EXECUTE sp_executesql @BaseQuery, @ParamList,         @MembershipNumber = @MembershipNumber,         @PlayerName = @PlayerName,         @PlayerNameEnglish = @PlayerNameEnglish,         @Age = @Age,         @Gender = @Genderlist,         @Mobile1 = @Mobile1,         @Mobile2 = @Mobile2;    end         
+```text
+ALTER Procedure [Evaluation].[SelectPlayerData]
+    @MembershipNumber varchar(20),
+    @PlayerName varchar(70),
+    @PlayerNameEnglish varchar(70),
+    @Age varchar(200),
+    @Gender varchar(100),
+    @Mobile1 varchar(20),
+    @Mobile2 varchar(20)
+    as
+    set nocount on
+    begin
+     Declare @BaseQuery nvarchar(max)
+     ='SELECT
+        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,
+                              Evaluation.Players.Mobile1, Evaluation.Players.Mobile2
+    FROM
+            Evaluation.Players INNER JOIN
+                             Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'
+        , @ParamList nvarchar(max) = N'@MembershipNumber varchar(20), @PlayerName varchar(70), @PlayerNameEnglish varchar(70),@Age varchar(200), @Gender varchar(100), @Mobile1 varchar(20) , @Mobile2 varchar(20)'
+        , @WhereClause nvarchar(max) = ' WHERE 1=1';
+    IF @MembershipNumber IS NOT NULL
+        BEGIN
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = '+@MembershipNumber+'';
+        END
+    IF @PlayerName IS NOT NULL
+        BEGIN
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = '+@PlayerName+'';
+        END
+    IF @PlayerNameEnglish IS NOT NULL
+        BEGIN
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = '+@PlayerNameEnglish+'';
+        END
+    IF @Age IS NOT NULL
+        BEGIN
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in ('+@Age+')';
+        END
+    IF @Gender IS NOT NULL
+        BEGIN
+        declare @genderlist nvarchar(1000)
+        declare @genderlist2 table (genders nvarchar(1000))
+        declare @temp int
+        INSERT INTO @genderlist2(genders)
+        SELECT Split.a.value('.', 'NVARCHAR(MAX)')
+  as a
+        FROM
+        (
+            SELECT CAST('<X>'+REPLACE(@Gender, ',', '</X><X>')+'</X>' AS XML) AS String
+        ) AS A
+        CROSS APPLY String.nodes('/X')
+         AS Split(a)
+         set @genderlist=(
+        select ''''+genders+''',' from @genderlist2
+        
+for xml path(''))
+        select @genderlist = left(@genderlist,len(@genderlist)-1);
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in ('+@genderlist+')';
+        END
+        IF @Mobile1 IS NOT NULL
+        BEGIN
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = '+@Mobile1+'';
+        END
+        IF @Mobile2 IS NOT NULL
+        BEGIN
+            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = '+@Mobile2+'';
+        END
+        SET @BaseQuery = @BaseQuery + @WhereClause;
+       EXECUTE sp_executesql @BaseQuery, @ParamList,
+         @MembershipNumber = @MembershipNumber,
+         @PlayerName = @PlayerName,
+         @PlayerNameEnglish = @PlayerNameEnglish,
+         @Age = @Age,
+         @Gender = @Genderlist,
+         @Mobile1 = @Mobile1,
+         @Mobile2 = @Mobile2;
+    end
 ```
 SQL Server 2016 Full procedure
-```
-     ALTER Procedure [Evaluation].[SelectPlayerData]@MembershipNumber varchar(20),@PlayerName varchar(70),@PlayerNameEnglish varchar(70),@Age varchar(200),@Gender varchar(100),@Mobile1 varchar(20),@Mobile2 varchar(20)asset nocount onbegin Declare @BaseQuery nvarchar(max) ='SELECT        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,                          Evaluation.Players.Mobile1, Evaluation.Players.Mobile2FROM            Evaluation.Players INNER JOIN                         Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'    , @ParamList nvarchar(max) = N'@MembershipNumber varchar(20), @PlayerName varchar(70), @PlayerNameEnglish varchar(70),@Age varchar(200), @Gender varchar(100), @Mobile1 varchar(20) , @Mobile2 varchar(20)'    , @WhereClause nvarchar(max) = ' WHERE 1=1';IF @MembershipNumber IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = '+@MembershipNumber+'';    ENDIF @PlayerName IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = '+@PlayerName+'';    ENDIF @PlayerNameEnglish IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = '+@PlayerNameEnglish+'';    ENDIF @Age IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in ('+@Age+')';    ENDIF @Gender IS NOT NULL    BEGIN    DECLARE @genderlist nvarchar(1000);    SET @genderlist=(select ''''+ value+''',' from string_split(@Gender,',')    FOR XML PATH(''));    SELECT @genderlist = left(@genderlist,len(@genderlist)-1);        SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in ('+@genderlist+')';    END    IF @Mobile1 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = '+@Mobile1+'';    END    IF @Mobile2 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = '+@Mobile2+'';    END    SET @BaseQuery = @BaseQuery + @WhereClause;   EXECUTE sp_executesql @BaseQuery, @ParamList,     @MembershipNumber = @MembershipNumber,     @PlayerName = @PlayerName,     @PlayerNameEnglish = @PlayerNameEnglish,     @Age = @Age,     @Gender = @Genderlist,     @Mobile1 = @Mobile1,     @Mobile2 = @Mobile2;end         
+```text
+ALTER Procedure [Evaluation].[SelectPlayerData]@MembershipNumber varchar(20),@PlayerName varchar(70),@PlayerNameEnglish varchar(70),@Age varchar(200),@Gender varchar(100),@Mobile1 varchar(20),@Mobile2 varchar(20)asset nocount onbegin Declare @BaseQuery nvarchar(max) ='SELECT
+        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,
+                          Evaluation.Players.Mobile1, Evaluation.Players.Mobile2FROM
+            Evaluation.Players INNER JOIN
+                         Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'
+    , @ParamList nvarchar(max) = N'@MembershipNumber varchar(20), @PlayerName varchar(70), @PlayerNameEnglish varchar(70),@Age varchar(200), @Gender varchar(100), @Mobile1 varchar(20) , @Mobile2 varchar(20)'
+    , @WhereClause nvarchar(max) = ' WHERE 1=1';IF @MembershipNumber IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = '+@MembershipNumber+'';
+    ENDIF @PlayerName IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = '+@PlayerName+'';
+    ENDIF @PlayerNameEnglish IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = '+@PlayerNameEnglish+'';
+    ENDIF @Age IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in ('+@Age+')';
+    ENDIF @Gender IS NOT NULL
+    BEGIN
+    DECLARE @genderlist nvarchar(1000);
+    SET @genderlist=(select ''''+ value+''',' from string_split(@Gender,',')
+    FOR XML PATH(''));
+    SELECT @genderlist = left(@genderlist,len(@genderlist)-1);
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in ('+@genderlist+')';
+    END
+    IF @Mobile1 IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = '+@Mobile1+'';
+    END
+    IF @Mobile2 IS NOT NULL
+    BEGIN
+        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = '+@Mobile2+'';
+    END
+    SET @BaseQuery = @BaseQuery + @WhereClause;
+   EXECUTE sp_executesql @BaseQuery, @ParamList,
+     @MembershipNumber = @MembershipNumber,
+     @PlayerName = @PlayerName,
+     @PlayerNameEnglish = @PlayerNameEnglish,
+     @Age = @Age,
+     @Gender = @Genderlist,
+     @Mobile1 = @Mobile1,
+     @Mobile2 = @Mobile2;end
 ```
 Test 1
-```
-create schema Evaluation        create table Evaluation.Players(       PlayerID int,  MembershipNumber int,  PlayerName nvarchar(255),  PlayerNameEnglish nvarchar(255),  Age varchar(200),                           Mobile1 char(15),Mobile2 char(15) , GenderID tinyint)        create table Evaluation.Gender(GenderID tinyint, GenderEnglish nvarchar(255))        insert into Evaluation.players VALUES (1,1,'Randi','Randi',12,123214215215,12421421422,1)        insert into Evaluation.players VALUES (2,2,'Gandalf','Gandalf',142,123214215215,12421421422,1)        insert into Evaluation.players VALUES (3,3,'Gandalf','Frodo',14,123214215215,12421421422,1)        insert into Evaluation.gender VALUES(1,'Male')        insert into Evaluation.gender VALUES(2,'Female')DECLARE @return_value intEXEC    @return_value = Evaluation.[SelectPlayerData]        @MembershipNumber = NULL,        @PlayerName = NULL,        @PlayerNameEnglish = NULL,        @Age = '12,14',        @Gender =  NULL,        @Mobile1 = NULL,        @Mobile2 = NULL   SELECT  'Return Value' = @return_value
+```text
+create schema Evaluation
+        create table Evaluation.Players(
+       PlayerID int,
+  MembershipNumber int,
+  PlayerName nvarchar(255),
+  PlayerNameEnglish nvarchar(255),
+  Age varchar(200),
+                           Mobile1 char(15),Mobile2 char(15) , GenderID tinyint)
+        create table Evaluation.Gender(GenderID tinyint, GenderEnglish nvarchar(255))
+        insert into Evaluation.players VALUES (1,1,'Randi','Randi',12,123214215215,12421421422,1)
+        insert into Evaluation.players VALUES (2,2,'Gandalf','Gandalf',142,123214215215,12421421422,1)
+        insert into Evaluation.players VALUES (3,3,'Gandalf','Frodo',14,123214215215,12421421422,1)
+        insert into Evaluation.gender VALUES(1,'Male')
+        insert into Evaluation.gender VALUES(2,'Female')DECLARE @return_value intEXEC
+    @return_value = Evaluation.[SelectPlayerData]
+        @MembershipNumber = NULL,
+        @PlayerName = NULL,
+        @PlayerNameEnglish = NULL,
+        @Age = '12,14',
+        @Gender =
+  NULL,
+        @Mobile1 = NULL,
+        @Mobile2 = NULL
+   SELECT
+  'Return Value' = @return_value
 ```
 Result
-```
-&gt;  PlayerID MembershipNumber    PlayerName  PlayerNameEnglish   Age GenderEnglish   Mobile1 Mobile2&gt;     1 1   Randi   Randi   12  Male    123214215215    12421421422    &gt;     3 3   Gandalf Frodo   14  Male    123214215215    12421421422
+```text
+PlayerID MembershipNumber
+    PlayerName
+  PlayerNameEnglish
+   Age GenderEnglish
+   Mobile1 Mobile2>
+     1 1
+   Randi
+   Randi
+   12
+  Male
+    123214215215
+    12421421422
+3 3
+   Gandalf Frodo
+   14
+  Male
+    123214215215
+    12421421422
 ```
 Test 2Extra insert
-```
+```text
 INSERT INTO Evaluation.players VALUES (4,4,'Emma','Watson',12,123214215215,12421421422,2);
 ```
 Execute proc
-```
- DECLARE @return_value intEXEC    @return_value = Evaluation.[SelectPlayerData]        @MembershipNumber = NULL,        @PlayerName = NULL,        @PlayerNameEnglish = NULL,        @Age = '12,14',        @Gender =  'Male,Female',        @Mobile1 = NULL,        @Mobile2 = NULL
+```text
+DECLARE @return_value intEXEC
+    @return_value = Evaluation.[SelectPlayerData]
+        @MembershipNumber = NULL,
+        @PlayerName = NULL,
+        @PlayerNameEnglish = NULL,
+        @Age = '12,14',
+        @Gender =
+  'Male,Female',
+        @Mobile1 = NULL,
+        @Mobile2 = NULL
 ```
 Result
-```
-PlayerID    MembershipNumber    PlayerName  PlayerNameEnglish   Age GenderEnglish   Mobile1 Mobile21   1   Randi   Randi   12  Male    123214215215    12421421422    3   3   Gandalf Frodo   14  Male    123214215215    12421421422    4   4   Emma    Watson  12  Female  123214215215    12421421422    
+```text
+PlayerID
+    MembershipNumber
+    PlayerName
+  PlayerNameEnglish
+   Age GenderEnglish
+   Mobile1 Mobile21
+   1
+   Randi
+   Randi
+   12
+  Male
+    123214215215
+    12421421422
+    3
+   3
+   Gandalf Frodo
+   14
+  Male
+    123214215215
+    12421421422
+    4
+   4
+   Emma
+    Watson
+  12
+  Female
+  123214215215
+    12421421422
 ```
 "" 
 
