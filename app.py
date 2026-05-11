@@ -107,7 +107,7 @@ def save_score(score_a, score_b):
 # --- INTERFACE D'ÉVALUATION ---
 st.title(f"Évaluation : {st.session_state.user}")
 total_q = len(questions_df)
-
+    
 if st.session_state.current_idx < total_q:
     idx = st.session_state.current_idx
     st.progress(idx / total_q)
@@ -119,12 +119,12 @@ if st.session_state.current_idx < total_q:
     
     # Affichage des consignes spécifiques
     if dataset_name in DATASET_INSTRUCTIONS:
-        st.info(DATASET_INSTRUCTIONS[dataset_name], icon="ℹ️")
+        st.info(DATASET_INSTRUCTIONS[dataset_name])
     else:
-        st.info(f"Dataset: {dataset_name} - Évaluez la pertinence du document par rapport à la requête.", icon="ℹ️")
+        st.info(f"Dataset: {dataset_name} - Évaluez la pertinence du document par rapport à la requête.")
 
     with st.expander("Voir la requête à évaluer", expanded=True):
-        st.code(curr_q['context'], language="text")
+        st.markdown(curr_q['context'])
 
     # Affichage A/B anonymisé
     responses = [curr_q['response_baseline'], curr_q['response_twsls']]
@@ -134,13 +134,13 @@ if st.session_state.current_idx < total_q:
     with col1:
         st.subheader("Document A")
         # On affiche le document selon l'ordre mélangé
-        st.write(responses[order[0]])
+        st.markdown(responses[order[0]])
         s_a = st.select_slider("Note A :", options=[1,2,3,4,5], value=3, key=f"a{idx}")
         
     with col2:
         st.subheader("Document B")
         # On affiche l'autre document
-        st.write(responses[order[1]])
+        st.markdown(responses[order[1]])
         s_b = st.select_slider("Note B :", options=[1,2,3,4,5], value=3, key=f"b{idx}")
 
     st.markdown("---")
