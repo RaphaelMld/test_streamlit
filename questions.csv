@@ -1,7 +1,396 @@
 dataset,query_id,context,response_baseline,response_twsls
-MANTIS,q1,"""Historique de la conversation...""","""Réponse du modèle baseline""","""Réponse du modèle T-WSLS"""
-MANTIS,q2,"""Historique de la conversation...""","""Réponse du modèle baseline""","""Réponse du modèle T-WSLS"""
-MANTIS,q3,"""Historique de la conversation...""","""Réponse du modèle baseline""","""Réponse du modèle T-WSLS"""
-TREC,t1,"""Requête de l'utilisateur...""","""Document extrait par baseline""","""Document extrait par T-WSLS"""
-TREC,t2,"""Requête de l'utilisateur...""","""Document extrait par baseline""","""Document extrait par T-WSLS"""
-TREC,t3,"""Requête de l'utilisateur...""","""Document extrait par baseline""","""Document extrait par T-WSLS"""
+MANTIS,mantis_q13266,"My question is essentially: How is conservation of energy held in quark transitions?Several quark transitions seem to break energy conservation, such as$$ d \rightarrow c W^{-}$$$$d \rightarrow t W^{-}$$where the masses are$$m_{d} \approx 3-7 \ \textrm{MeV}$$$$m_{c} \approx 1.25\ \textrm{GeV}$$$$m_{t} \approx 172\ \textrm{GeV}$$$$m_{W^{-}} \approx 80.4 \ \textrm{GeV}$$Are all these transitions (and others) forbidden according to conservation of energy? Clearly they are perfectly allowed transitions, and so my intuition tells me the reason is due to the effective masses of quarks within a bound system.  
+
+---
+
+ **[Message suivant]**
+
+ ""
+>   intuition tells me the reason is due to the effective masses of quarks within a bound system. 
+Your intuition confuses you because you are trying to use a type of """"conservation of mass"""", (identifying mass with energy), a classical concept, instead of conservation of energy and momentum which makes life simple. One has to work with four vectors.If the coupling constants exist, and the center of mass energy of the """"system"""" under consideration allows the generation of the rest masses of the particles, the reaction can become physical.A simpler example than quarks comes from the inverse beta decay. The free neutron decays into a proton because it is energetically allowed, as the proton has a smaller mass than the neutron. BUT in a nucleus the inverse process is a allowed, taking energy from the nuclear system, the proton turning into a neutron,  $β^{+}$ decay. .Having said the above, I am curious in where did you find a d to top transition, which would have to go with higher order diagrams, still following four momentum algebra. This is the table of the straight forward couplings in quark decays,"" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ Is it correct to say that energy required comes from the binding energy?My question arose from a homework assignment regarding Feynman diagrams for a particle physics class 
+
+---
+
+ **[Message suivant]**
+
+","Temperature is a classical, thermodynamic concept. In the plot above  it is  connected to the average kinetic energy  that can be transfered in collisions. The transition is posited to happen at ~100 GeV, because of the masses of the Z and W. So when the average temperatyre is 100 GeV there is, according to the standard model, enough energy for scattering outputs to be produced with masses. It is just a model, scale that works as it fits the data.","""But you're asking about beta decays, where the mass number does not change. In that case the you have to keep track of both the binding energy and the proton-neutron mass difference. Professionals use what's called the """"mass excess"""" to make things simpler. I've written about using mass excess to simplify binding energy problems before (e.g. [here](https://physics.stackexchange.com/a/112261/44126), [here](https://physics.stackexchange.com/a/161270), [here](https://physics.stackexchange.com/a/247202)). If nobody beats me to it, perhaps later I will add a mass excess discussion to this answer."""
+MANTIS,mantis_q9801,"""""""Thrice-Honored Father"""", """"Thrice-Honored Rulers"""" or the like.The term  appears in the mid-nineteenth century books.  For example: here  and here and here and here.It has a classical feel to it -- Latin or Chinese. But I can't find much about it. What is the background of this phrase?"" 
+
+---
+
+ **[Message suivant]**
+
+ ""Mathematics or HyperboleAs it has been used at least since Middle English, thrice participates in two linguistic systems of numbering. In a one, two, three system, thrice means ‘three times’: 
+>   Published to commemorate the artist/photographer's [Luis González Palma] third invitation and participation at the Venice Biennale in 2017, making him the very first and only Latin-American artist thus far to be thrice-honored by the most prestigious art retrospective in the world.
+The Guatemalan photographer had been invited to the Venice Biennale three times, thus thrice-honored.In a one, two, many system, however, thrice means ‘to a great degree’:
+>   There was this many knyghtes that overmacched [‘overmatched’ defeated] sir Gawayne for all his thryse double myght. — Thomas Malory, Le Morte d’Arthur, ca. 1470.
+Now I don't suspect Sir Thomas expected his readers to pause his tale of a noble knight to solve a simple multiplication problem, but instead  is using thrice double hyperbolically.  For all Gawain’s legendary prowess, there were still knights who could “overmatch” him.Thrice Double Shakespeare, Thrise Double Harvey, Twice JonsonShakespeare uses thrice two times in this sense, including Malory’s thrice double:
+>   [Orlando to Oliver] he is thrice a villain that says such a father begot villains. — AYL 1, 1, 54.       [Caliban to Prospero] What a thrice double ass / Was I... — Tem 5, 1, 296.
+As a convenient intensifier, thrice invited the formation of readily understood compounds. Gabriel Harvey’s Letter-Book (1579) uses thrice — actually the older spelling thrise where the genitive ending is more transparent — with six different adjectives: happye and thrise happye (57, 92), thrise happye alone (78), thrise venerable (60), thrishonorable, in reference to Spenser’s moustache (61), thrise mightye (69), thrise dulcer (110), and thrise blessed (130).Shakespeare uses six such compounds (or strictly thrice double, if you like):
+>   [Tamora to Titus] Thrice-noble Titus, spare my son. Tit 1, 1, 20.    [disguised Tamora to Titus] send for Lucius, thy thrice-valiant son. — Tit 5, 2, 112.        [Ulysses to Ajax] thy parts of nature / Thrice-famed beyond ... all erudition. — TC 2, 3, 240.    [Troilus alone] What will it be, / When that the watery palate tastes indeed / Love's thrice-repured nectar? [Q; F thrice reputed] [or: three-times purified] — TC 3, 2, 20.    [Warwick to King, of Gloucester] violent hands were laid / Upon the life of this thrice-famed Duke. — 2H6, 3, 2, 157.    [Othello to all, of custom] Hath made the flinty and steel couch of war / My thrice-driven bed of down. — Oth 1, 3, 229.
+Although Shakespeare does not specifically use thrice-honoured, both his plays and Malory’s romance show that one need not look to French or Latin for its origins. Both Gabriel Harvey and Shakespeare also show that the pattern could be easily followed with other adjectives to produce further compounds.When Shakespeare’s rival Ben Jonson was briefly imprisoned in 1605 for once again running afoul of the censors, he penned a letter “to the most nobly virtuous and thrice-honoured Earl of Salisbury.” And upon Jonson’s death
+>   Shackerley Marmion also wrote … an elegy on Jonson, published in 1638, titled “A Funeral Sacrifice, to the Sacred Memory of his Thrice-Honored Father, Ben Jonson.”
+Early American SourcesAs Mormion elegized Jonson, when Josiah Winslow, the first colonial governor born in America, died in 1680, a clergyman in Scituate penned an elegy in rather tortured pentameter:
+>   Upon the much to be lamented DEATH of the thrice three times honoured JOSIAH WINSLOW, Esq., late GOVERNOUR of New Plymouth    Thrice honoured Rulers, Elders, and People all
+  Come and lament this stately Cedar's fall.
+  …  Thrice Royal CHARLES, were he in person here,
+  Into thy Urn, would drop a sacred tear. — The Rev. William Wetherell,  Scituate, Mass., 1680.
+On a  happier note, and with a far greater sense of the powers of English, William Penn closes a letter to his wife:
+>   So farewell to my thrice dearly beloved wife and children!  Yours, as God pleaseth, in that which no waters can quench, no time forget, nor distance wear away, but remains for ever, """" Worminghurst, fourth of sixth month, 1682.  William Penn. — cited in:  Sydney Smith, The Edinburgh Review 21(1813), 458.
+A Fourth of July speech in 1795 begins with a rhetorical flourish:
+>   This honored, thrice honored day completes the nineteenth anniversary of our political freedom: it constitutes an august era in the annals of time, well worthy of being held in perpetual remembrance to the latest generations: it founds an illustrious epocha in the history of man, highly meriting most grateful inscription, on the living tablet of the raptured heart. — An oration on the independence of the United States of Federate America; pronounced at Portsmouth, New-Hampshire, July 4, 1795. / By George Richards. 
+The construction adjective, thrice adjective seems to have been a favored device, also in England:
+>   But happy they, thrice happy, who profess Their greatest blessing is the power to bless… — The British Critic, and Quarterly Theological Review, 1801.    Welcome, thrice, welcome, ye noble patriots, to this asylum of the oppressed! — William Hamilton, Report of the Trial and Acquittal of Edward Shippen, Esq., Chief Justice, 1805.    The city of Providence, fortunate in its situation at the head-waters of Narragansett Bay, thrice fortunate in its birth of freedom and soul liberty in 1636, was most highly favored in the character and quality of its founders. — Biographical Pamphlet, 1812.
+This construction apparently enjoyed a long-lived popularity. First seen in Gabriel Harvey, Phineas Fletcher manages to use happy, thrice happy three times in only seven lines:
+>   Thrice Happy Times
+  Happy, thrice happy times in silver age!
+   …
+  Happy, thrice happy age! happy, thrice happy times! — Phineas Fletcher (d. 1650).
+ConclusionThrice as a hyperbolic intensifier and its compounds offered poets and orators, especially those of lesser skills, a way of adding gravitas to their works. Thus one can imagine Coleridge's delight in addressing “thrice-honoured fleas” in a tribute to John Donne’s little erotic poem.  Thrice compounds remained popular well into the twentieth century: At archive.org, a query for thrice honoured and thrice honored yielded together 2361 hits, but Fletcher’s happy, thrice happy produced 7476.."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ ""Thank you for your citations combining  """"thrice"""" with """"honored"""" or its near synonyms.I was hoping for a specific  formulaic origin, but I think we'll have to leave it as generic intensifier which gradually came to be used for this more specific purpose."" 
+
+---
+
+ **[Message suivant]**
+
+",Not enough information but I would assume they are good for peaks of 20 amps.,"Since these compounds virtually appear at the same time in the late sixteenth century, it’s doubtful there is a specific origin for _thrice honored_ beyond the conventions of polite and formal language of the day. The _Letter-Book_, from which I’ve added a few uses,  suggests thrice-compounds were quite common  among elite speakers."
+MANTIS,mantis_q16848,"""<pre><code>library(lme4)library(merTools)data(sleepstudy)fm1 &lt;- lmer(Reaction ~ Days + (Days|Subject), data=sleepstudy)PI &lt;- predictInterval(merMod = fm1, newdata = sleepstudy,                  level = 0.95, n.sims = 1000,                  stat = """"median"""", type=""""linear.prediction"""",                  include.resid.var = TRUE)</code></pre>My question is: is there a rule of thumb of what the value of <code>n.sims</code> should be?EDITMy data contains 20686 rows (i.e. 20686 response variables) and 20 predictors. For such dataset, how many bootstrap samples are required? Is there any plots or papers that I can refer to that explain the number of bootstrap samples as a function of data size?"" 
+
+---
+
+ **[Message suivant]**
+
+ ""In addition to what can be found in the linked answer, some pointers:More is better.  Bootstrapping takes random subsamples with replacement, so the more often you do this, the smaller the chance your results are affected by the stochastic nature of this approach. For your final model you should do whatever number of bootstrap samples $B$ is still computationally feasible.If your data set is very large, or your model very complex, then $B=1,000$ may be prohibitively large for simple trial and error, so you could start with a lower number, bearing in mind that the variance will be larger. For example, if $B=1,000$ takes 10 minutes to run on your system, then simply halving to $B=500$ will already allow you to do twice as much trial and error in the same time. Your final comparisons could then be run overnight with a much larger number (e.g. $B=10,000$)."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ Okay. Thanks. My data contains 20686 rows (i.e. 20686 response variables) and 20 predictors. So what does your 2nd point mean in this context? 
+
+---
+
+ **[Message suivant]**
+
+","@vvv Your random number generation though correct is strange. You are generating a variable that can take on any value between 0 and ~370,000. Usually, we do not use such variables in models without transforming them somehow. The major point here is that statsmodel GLM behaves as one might expect. Most of the p-values at large sample sizes are greater than .05 (~95% of the p-values), if you repeat the process enough times.","P-values are usually reported on their own. If you want a confidence interval, try Bootstrapping. Re-sample the data, and compute the p-value. Repeat this many times and you get an approximate sampling distribution for $p$."
+MANTIS,mantis_q11398,"""I'm using this code, of @Loïc Dutrieux, to stack 8 Landsat bands. <pre class=""""lang-py prettyprint-override""""><code>with rasterio.open(final_list[0]) as src0:   meta = src0.metawith rasterio.open('stack.tif', 'w', **meta) as dst:for id, layer in enumerate(final_list):    with rasterio.open(layer) as src1:        #the .astype(rasterio.int16) forces dtype to int16        dst.write_band(id + 1, src1.read(1).astype(rasterio.int16))</code></pre>When I open the <code>stack.tif</code> with <code>gdalinfo</code> I'm not getting bands' description in the <code>Metadata</code>: <pre><code>...Metadata:AREA_OR_POINT=AreaImage Structure Metadata:...Band 1 Block=3596x1 Type=Int16, ColorInterp=GrayNoData Value=-9999Band 2 Block=3596x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999...</code></pre>I would like something similar to this:<pre><code>...Metadata:Band_1=Band 1 ReflectanceBand_2=Band 2 ReflectanceBand_3=Band 3 ReflectanceBand_4=Band 4 ReflectanceBand_5=Band 5 ReflectanceBand_6=Band 7 ReflectanceBand_7=Band 6 TemperatureBand_8=FmaskImage Structure Metadata:...Band 1 Block=300x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999Band 2 Block=300x1 Type=Int16, ColorInterp=UndefinedNoData Value=-9999...</code></pre>"" 
+
+---
+
+ **[Message suivant]**
+
+ If using rasterio >= 1.0, use the <code>dataset.set_band_description(self, bidx, value)</code> method and <code>dataset.descriptions</code> property.<pre><code>Sets the description of a dataset band.Parameters----------bidx : int    Index of the band (starting with 1).value: string    A description of the band.</code></pre>For example:<pre><code>descriptions = [    'Band 1 Reflectance',     'Band 2 Reflectance',    'Band 3 Reflectance',    'Band 4 Reflectance',    'Band 5 Reflectance',    'Band 7 Reflectance',     'Band 6 Temperature']for id, layer in enumerate(final_list, start=1):    with rasterio.open(layer) as src1:        #the .astype(rasterio.int16) forces dtype to int16        dst.write_band(id, src1.read(1).astype(rasterio.int16))        # Assuming the source dataset band 1 has a description        dst.set_band_description(id, src1.descriptions[0])        # If not, you can put anything in you want        dst.set_band_description(id, descriptions[id-1])</code></pre> 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ Thank you @Luke for your answer. My `rasterio.__version__ = '0.36.0'`. Properties like `src.descriptions` are not available in my version. if it's a matter of version, please help me to install the newest. Could find any guide in the web 
+
+---
+
+ **[Message suivant]**
+
+","""@JoshuahHeath I'm not sure I understand. I would imagine then you are left with a closed fermi """"arc"""", ie. an extra boundary band, not a bulk band.""",@SamuelGachuhi I think you are doing correctly. Only difference I had in my workflow was that I used each band as separate files (i.e. single-band raster).
+MANTIS,mantis_q9692,"The final vowel-sound in 'formulae' can be pronounced as in 'cry' or as in'sea', the former corresponding to the scholarly and presumably originalpronunciation of the Latin diphthong, the latter to the mediæval.  Is one ofthem virtually universally embraced in Oxford and Cambridge?There is nothing on the pronunciation of this plural in the OED. 
+
+---
+
+ **[Message suivant]**
+
+ ""The traditional English pronunciation of word-final """"ae"""" is /iː/, as in """"algae"""". You can see examples of this in F'x's answer to Pronunciation of words ending with “‑ae”. There is nothing special about the word """"formulae"""" that I know of that would cause it to deviate from this pattern.The pronunciation /aɪ/ is derived from the """"restored"""" English pronunciation of Latin.Basically, sometime around the end of the 19th century (I don't have a great handle on the exact timeline, sorry), people stopped using the traditional English pronunciation of Latin to teach Latin as a language.In its place, a new pronunciation system was developed for English students of Latin to use that was meant to approximate the reconstructed sound system of Classical Latin. As with the approximate """"pronunciation guides"""" for living languages that are often used in low-level language teaching (e.g. pocket language guides), there are some notable differences between the typical """"restored"""" English pronunciation and how we think the Romans actually pronounced things. """"Restored"""" English pronunciation could be thought of as reconstructed Latin spoken with a more-or-less strong English accent. (E.g. English speakers using """"restored"""" pronunciation often diphthongize the vowels """"e"""" and """"o"""" in certain contexts to something like [eɪ] and [oʊ], which is not a feature of reconstructed Latin pronunciation.) It's not clear to me how intentional the gap between """"restored"""" English pronunciation and actual reconstructed Latin pronunciation was supposed to be; it seems possible that some idealistic teachers supposed that they could actually teach their students to speak Latin like the Romans, but the typical weaknesses of foreign language instruction led to the widespread use of more English-phonology-based pronunciations by students.In the restored pronunciation of Latin, Latin """"ae"""" is equated to the English vowel phoneme /aɪ/, as in the word """"price"""". This is because there is a fair amount of evidence that Latin words spelled with """"ae"""" in the Classical period were at one point pronounced with a diphthongal sound something like [aɪ̯] or [ae̯] (the use of the spelling """"ae"""" in Classical Latin suggests that the pronunciation of the final element was somewhat lower than [i̯]). We know this partly based on etymology, and I believe there are also descriptions of the phonetics of Latin sounds in some Classical texts. The English """"price"""" vowel in most accents is a diphthong in this general area (the phonetic details of the """"price"""" vowel of course vary between accents, and depending on the phonetic context).Even in the Classical period, there is evidence that some Latin speakers pronounced """"ae"""" as a monophthongal vowel with a quality similar or identical to Latin """"long e"""".By the time of Medieval Latin, I have the impression diphthongal pronunciations of """"ae"""" were entirely extinct. According to Wikipedia, in Medieval Latin writing, """"ae"""", """"e"""" and """"ę"""" were all used to represent both Classical Latin """"ae"""" and Classical Latin """"e"""".In the traditional pronunciations of Latin used in Continental Europe (e.g. """"Ecclesiastical"""" or Italian traditional pronunciation of Latin), """"ae"""" is pronounced as a monophthong with a quality somewhere in the area of [e~ɛ] (I don't remember the details of vowel quality for different systems, and I think there is some variability or uncertainty).This is the source of the traditional English pronunciation of """"ae"""" as [iː]: due to the """"Great Vowel Shift"""", [eː] and [ɛː] turned into [iː] in English pronunciation.In my experience, most prescriptive sources that bother to take a stand on [iː] vs. [aɪ] for """"ae"""" in modern English words are more in favor of [iː], although my experience may not be representative. One relatively prominent strand in the prescriptive tradition is an emphasis on consistency, and pronouncing """"ae"""" as [aɪ] in words like """"formulae"""" is inconsistent with the established pronunciation of this digraph in a number of words (like """"Caesar"""" and the aforementioned """"algae""""; also, in British English, words like """"anaemia"""" and """"anaemic""""). Furthermore, the use of a """"restored"""" pronunciation for """"ae"""" introduces inconsistency not only between words, but also within words: """"formulae"""" is pretty much always pronounced with a palatal glide /j/ after the /m/, even though the restored pronunciation would call for pronouncing the """"mu"""" in this word as /mʊ/ with no glide after the /m/.A third minor pronunciation for """"ae"""" in English exists, [eɪ]. This represents an English approximation of the [eː]/[ɛː] value that I mentioned occurs in Continental European traditions for the pronunciation of Latin, like """"Ecclesiastical"""" Latin. There may also be some minor influence from spelling, since """"long a"""" in English is pronounced as [eɪ], and word-final """"e"""" often indicates a """"long"""" pronunciation of the preceding vowel. I don't think [eɪ] for """"ae"""" is endorsed by many prescriptive sources (in fact, I don't know of any).As far as I know, none of the various pronunciations of word-final """"ae"""" in English words is """"universally"""" embraced by educated individuals. Most people don't have the occasion to pronounce words like """"formulae"""" that often."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ Just to your last paragraph, I was actually wondering about the many Oxbridgeans ((?) not educated men in general) who do in fact have occasion to say 'formulae' all the time.  It is not unthinkable that a certain variant has come to be strongly favoured in a certain milieu.---By the way, isn't 'antennae' always pronounced with /ai/? 
+
+---
+
+ **[Message suivant]**
+
+","""Because like language itself, people won't speak """"just Latin"""" for ever. And it's better to write code that doesn't make assumptions about the client. I would rather not have implicit assumptions if not needed at all.""","You're welcome, and I'm sorry they didn't help much with the pronunciation. I've heard that pronunciation of Old English is an unsolved mystery n modern times, sadly. But have you seen this, by A. C. Baugh: pps. 60-62 where he provides a fairly detailed discussion of some of the main features of OE pronunciation and how it differs from modern English in spelling. I have the 1935 edition, which appears to be about the same, except this part is on pps. 62-64 in my book. (Which may be available online, although I haven't located it yet.) https://archive.org/stream/isbn_0390070262#page/60/mode/2up"
+MANTIS,mantis_q13058,"""There is a point charge inside a neutral conducting shell. My understanding is that when we move the charge from point K to L along the path, we experience no force since the electric field inside due to the sphere is zero. I have a couple of questions regarding this system.1) Is my understanding that the electric field due to the shell is zero inside correct? If the answer is a yes, then..2) If we moved the charge really fast along the path, would there still be no field due to shell only?3) When we are moving the charge, there must be a redistribution of charges on the conducting shell. Does that mean the electrostatic self energy of the shell change? If it changes, how come it is so, when we are doing no work on the charge inside? (Again constant speed)4) While the redistribution of charges is in progress, do the electrons gain extra kinetic energy cause they are changing their positions around the sphere? And where does this energy come from in terms of energy conservation?"" 
+
+---
+
+ **[Message suivant]**
+
+ ""1) No - see this answer.2, 3, and 4) N/A."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ If its charge is not much less than the charge of the shell, and we move it really slowly, does it experience a coulomb force while moving?what if the shell is neutral for example and the charge is a big one? 
+
+---
+
+ **[Message suivant]**
+
+ @physicsguy19 Sorry, I realized my answer was completely wrong and changed it. 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ if the charge is at the centre of the shell, no force on the charge. if its not, everything changes.. is that correct? 
+
+---
+
+ **[Message suivant]**
+
+",@Abcd That conducting middle plate would have induced charges on its surface. If it did not there would be an electric field inside the **conducting** metal plate.,"@physicsguy19 Correct. If the charge isn't at the center of the shell, then it feels an radial force and gets attracted toward the nearest wall."
+MANTIS,mantis_q5024,"""I am at a bit of a loss.  I am able to perform an nslookup and a dig on the address """"imap.comcast.net"""" but if I try to ping it or connect to it from my application I get a """"Temporary failure in name resolution"""".  Something must be amiss in my DNS configuration but I am unsure what it is.<pre><code>&gt; ping imap.comcast.netping: imap.comcast.net: Temporary failure in name resolution&gt; systemd-resolve --status --no-pagerGlobal          DNSSEC NTA: 10.in-addr.arpa                      16.172.in-addr.arpa                      168.192.in-addr.arpa                      17.172.in-addr.arpa                      18.172.in-addr.arpa                      19.172.in-addr.arpa                      20.172.in-addr.arpa                      21.172.in-addr.arpa                      22.172.in-addr.arpa                      23.172.in-addr.arpa                      24.172.in-addr.arpa                      25.172.in-addr.arpa                      26.172.in-addr.arpa                      27.172.in-addr.arpa                      28.172.in-addr.arpa                      29.172.in-addr.arpa                      30.172.in-addr.arpa                      31.172.in-addr.arpa                      corp                      d.f.ip6.arpa                      home                      internal                      intranet                      lan                      local                      private                      testLink 2 (ens3)      Current Scopes: DNS       LLMNR setting: yesMulticastDNS setting: no      DNSSEC setting: no    DNSSEC supported: no         DNS Servers: 10.0.0.2          DNS Domain: ec2.internal&gt; cat /etc/resolv.conf# This file is managed by man:systemd-resolved(8). Do not edit.## This is a dynamic resolv.conf file for connecting local clients to the# internal DNS stub resolver of systemd-resolved. This file lists all# configured search domains.## Run """"systemd-resolve --status"""" to see details about the uplink DNS servers# currently in use.## Third party programs must not access this file directly, but only through the# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,# replace this symlink by a static file or a different symlink.## See man:systemd-resolved.service(8) for details about the supported modes of# operation for /etc/resolv.conf.nameserver 127.0.0.53search ec2.internal</code></pre>Some more forensic information/etc/resolv.conf is a symlink as seen here<pre><code>&gt; readlink -f /etc/resolv.conf/run/systemd/resolve/stub-resolv.conf</code></pre>If I change the symlink and restart systemd.resolve I can ping the address but it appears to disable dns caching<pre><code>&gt;sudo service systemd-resolved stop&gt;sudo rm -f /etc/resolv.conf&gt;sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf&gt;sudo service systemd-resolved start&gt;ping imap.comcast.net&gt;sudo systemd-resolve --statisticsDNSSEC supported by current servers: noTransactionsCurrent Transactions: 0  Total Transactions: 0Cache  Current Cache Size: 0          Cache Hits: 0        Cache Misses: 0DNSSEC Verdicts              Secure: 0            Insecure: 0               Bogus: 0       Indeterminate: 0</code></pre>"" 
+
+---
+
+ **[Message suivant]**
+
+ ""I think I had this issue before. I used the first answer in this question to resolve it:Wrong nameserver set by resolvconf and NetworkManagerThe answer is to change the resolv.conf symlink:<pre><code>sudo rm -f /etc/resolv.confsudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.confreboot</code></pre>"" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ I attempted to change the symlink like so`sudo service systemd-resolved stop``sudo rm -f /etc/resolv.conf``sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf``sudo service systemd-resolved start`But, although it does solve my name resolution error it also seems to disable systemd.resolve's dns caching completely 
+
+---
+
+ **[Message suivant]**
+
+",What are you using to determine if systemd-resolved's dns caching is enabled or not?,@SlavaFominII I agree that hard-wiring DNS servers is not optimal. The temporary changes to /etc/nsswitch.conf probably require a reboot to stick. I've put up Update #6 for you to test while monitoring `resolvectl` instead of watching `/etc/resolv.conf`. Report back :-)
+MANTIS,mantis_q13776,"I have a home work:
+>   Consider a head-on collision of a 'bullet' of rest mass $M$ with a stationary 'target' of rest mass $m$. Prove that the post-collision γ-factor of the bullet cannot exceed:$$(m^2 + M^2)/(2mM).$$   [Hint: if $P, P'$ are the pre- and post- collision four-momenta of the bullet, and $Q, Q'$ those of the target,show, by going to the CM frame, that $(P' − Q)^2 ≥ 0$; in fact, in the CM frame $P' − Q$ has no spatial components.] 
+I have solved problem from the hint that $(P' − Q)^2 ≥ 0$ and $P' − Q$ should have non-spatial component.The first hint is easy, because four-momentum is time-like hence it should always be non-negative. What i don't understand is that why $P' − Q$ should have non-spatial component in COM? 
+
+---
+
+ **[Message suivant]**
+
+ ""(The problem in the OP appears to be from Rindler, Relativity: Special, General, and Cosmological, 2ed, Exercise 6.7.)The statement""""in the CM [zero-momentum, center of momentum] frame $(P'-Q)$ has no spatial components"""" means that $(P'-Q)$ is parallel to the total-4-momentum $(P+Q)$, also $(P'+Q')$ [by conservation]. This appears to hold true when the collision is elastic.As I was writing this, I eventually arrived at a simpler solution in the end.But I've kept what I started with because it may be useful to others (as it was to me).Inspired by the Mandelstam variables ( https://en.wikipedia.org/wiki/Mandelstam_variables )(which I am learning more about)I can prove it using dot-products... but can't easily explain it in those terms... but I suspect there is a simpler method using dot-products using the 4-momenta directly... when things get sorted out.In these terms, let me define the following 4-vectors: $S=P+Q=P'+Q'$ (the total-4-momentum) ,$T=P-P'=Q'-Q$, (the 4-momentum transfer)  and$U=P-Q'=P'-Q$ (some kind of cross term),where I have used momentum conservation ($P+Q=P'+Q'$) to write the second equality in each.It's easy to show that $S\cdot T=0$ (the momentum-transfer is orthogonal to the total-momentum).What you want to show is that,for elastic collisions, $U$ is parallel to $S$ by showing that $U\cdot T=0$.(By elastic, we have, in addition to $P+Q=P'+Q'$, the conditions $P^2=P'^2$ and $Q^2=Q'^2$.)First note that $$S^2=(P+Q)^2=P^2+2P\cdot Q+Q^2.$$Next, note that $$S+T+U=(3P+Q-P'-Q')=2P,$$ where I invoked momentum conservation.It can be shown that $S^2+T^2+U^2=P^2+Q^2+P'^2+Q'^2$, which equals $2(P^2+Q^2)$ in the elastic case.By squaring $T+U=2P-S=P-Q$ and isolating $2T\cdot U$,I get$$\begin{align}   2 T\cdot U &amp;=P^2-2P\cdot Q+Q^2 -[T^2+U^2]\\&amp;=P^2-2P\cdot Q+Q^2 -[2(P^2+Q^2)-S^2]\\&amp;=-P^2-2P\cdot Q-Q^2 +S^2\\&amp;=0\end{align}$$There's likely a simpler calculation with dot-products [without invoking Mandelstam] which might be suggested by the following energy-momentum diagram. (update: there is)Now here's an energy-momentum diagram, which suggests a simpler geometric interpretation.The 4-vector $U=P'-Q=P'-Q_{copy}$ is shown, connecting the tip of $Q_{copy}$ to $P'$.The momentum-transfer segment $T$ (connecting A and C), which is orthogonal to the total-momentum $S$, is actually bisected by $S$ when the collision is elastic... that is when $C$ (the tip of $P'$ and the tail of $Q'$) is at the intersection of the two mass-shells determined by $P$ and $Q$. So, this means that in the zero-momentum COM frame,the spatial part of $Q$ (which is projected onto half of $T$) is equal to the spatial part of $P'$ (which is projected onto the other half of $T$). Thus, the difference in their spatial components is zero.Thus, $U\cdot T=(P'-Q)\cdot T=P'\cdot T - Q\cdot T=P'_{x,COM}-Q_{x,COM}=0$.Okay, after writing this up and thinking about it some more... Here is a simpler calculation. (I'll leave the earlier stuff up there because it may be useful. It was to me.)$$\begin{align}0&amp;\stackrel{?}{=}U\cdot T\\&amp;=(P'-Q)\cdot T\\&amp;=(P'-[P'+Q'-P])\cdot T \qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\cdot T\\&amp;=(P'+P)\cdot T-[P'+Q']\cdot T\\&amp;=(P'+P)\cdot T- \qquad 0\qquad\quad \mbox{since $S\cdot T=0$}\\&amp;=(P'+P)\cdot (P-P')\\&amp;=P'^2-P^2\\&amp;=\qquad 0 \qquad  \qquad \qquad\qquad \mbox{since $P'^2=P^2$ for an elastic collision}\\\end{align}$$One more update. I think the following variant of the last calculation constructs $U$ as a multiple of $S$:$$\begin{align}U&amp;=(P'-Q)\\&amp;=(P'-[P'+Q'-P])\qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\\&amp;=(P'+P)-[P'+Q']\\&amp;=(P'+P) -S\qquad\qquad\quad \mbox{since $S=P'+Q'$}\\\end{align}$$Since $P'$ and $P$ are future-pointing timelike, then so is $(P'+P)$. For an elastic collision $(P'+P)$ is a multiple of $S$, because of symmetry [recall $P^2=P'^2$ for an elastic collision]... and it seems we need that $P$, $P'$, and $S$ are coplanar.From the diagram, $(P'+P)$ has magnitude $2P\cosh\theta_{PS}$, where $\theta$ is the rapidity between $P$ and $S$.So, it seems (assuming no errors in the calculation and the diagram) that since $S$ has magnitude $P\cosh\theta_{PS}+Q\cosh\theta_{QS}$, then, for an elastic collision [with $P$, $P'$,and $S$ coplanar],$U$ is a multiple of $S$ and$U$ has magnitude $| P\cosh\theta_{PS}-Q\cosh\theta_{QS}|$, the difference of the relativistic-energies-in-the-COM-frame."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ I still have one question:if $U\cdot T$ and $S\cdot T$ is $0$, how do you conclude that U and S are parallel? What do you mean by parallel? 
+
+---
+
+ **[Message suivant]**
+
+","I'm presuming that all of these 4-vectors are in the same plane... like in a typical spacetime diagram with one-spatial dimension. By parallel in the plane, I mean that S and U are proportional, multiples of each other: $\tilde U=k \tilde S$.","Yes, you want me to use that state, instead? The eigenvalue of $\sigma_1\cdot \sigma_2$ is the same for each state of the triplet. It's only the first term that notices its alignment, and hence labeling of its states."
+MANTIS,mantis_q17362,"""I want to isolate gender differences in preferences for a particular attribute of a product based on data available about their product purchases. I understand that I have to use a mixed Poisson regression model as in my data - (1) I have same person buying multiple products (also, a given product might be bought by several people); and (2) the product attribute I am interested is a count variable. I am using the below model in <code>R</code> - <pre><code>glmer(p1 ~ gender + (1|personID), family=poisson)</code></pre>In this model, how should I control for the effects of other product attributes (e.g., <code>price</code>)? In essence, I want to say something to the effect of """"women prefer products that are high on <code>p1</code> more than do men, even after controlling for price of the products""""?  Would the below modification to the model take care of all other product attributes?<pre><code>glmer(p1 ~ gender + (1|personID) + (1|product), family=poisson)</code></pre>"" 
+
+---
+
+ **[Message suivant]**
+
+ ""Variables that you want to control for are usually added as independent variables to your model (so you'd simply add price to the RHS of the equal sign in your model statement).  That being said, I wonder if you are approaching your modeling in an appropriate way?  What is $p_1$ here?  Is $p_1$ a count variable?  Poisson models are usually reserved for modeling count data (i.e. when your response is a count, not your independent variables) -- this is the reason you were probably told to use a Poisson model -- not because of the first reason you listed in your post: """"I have same person buying multiple products (also, a given product might be bought by several people).""""  When you have multiple purchases by the same person, this usually indicates that here is a correlated data problem, which means you'll likely have to rely on other methods than a standard Poisson model.  This is likely why someone recommended you use a mixed model.   That being said, given that you are interested in overall/population gender effects, and you have correlated data, I'd recommend the use of Generalized Estimating Equations or a Quasi-Poisson model.  Mixed models are generally needed for estimating individual level effects (e.g. if you were interested in looking at a specific person's purchase behavior), but in this case, you seem interested only in population-level estimates to predict general preferences among demographic blocks.What I would recommend you do is build a GEE model and include as many different attributes as you want to control for on the product as covariates in your model as well as your repeated subject ID and gender indicator variable.  Then you'll be able to say for example what the expected effect on your response is when you go from males to femals (or vice-versa) when controlling for the given attributes.  You should consider including interaction terms if you think certain attributes have a differential effect on your outcome variable for males and females.  This will also allow you to assess the impact of the attributes on preferences."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ Thank you very much. I will explore GEE and Quasi-Poisson. But I still don't exactly get what is incorrect with the current `glmer` Poisson model specification. Could I not simply look at the coefficient of `gender` in the mixed model and its significance to make inferences about gender differences? Please let me know. A second concern that remains is, with respect to adding `price` as co-variate/control variable. Does it not imply that I am trying to say that price predicts `p1`? How do I say that it is not on price, but p1 that gender differences exist? 
+
+---
+
+ **[Message suivant]**
+
+","""@Mike, *"""" I'm assuming height matters for males, but not females, and weight matters for females, but not males.""""* In that case, do not call that product term """"interaction"""" because it's actually not. And also be aware that i) your model constraints the association very severely and before fitting so, double check with exploratory data analysis; ii) according to your model, height matters to male and female matters to female may not actually be true, it's just because you model them that way.""","@762 Yes, for the dependent variable,  depending on the numbers you may want to fit a Poisson model (which would be a GLMM), though if the numbers are large and well approximated by a normal distribution, a LMM may be adequate, If you refer to independent variables, they should be handled automatically. Take a look at the 2 references I gave to my answer [here](https://stats.stackexchange.com/questions/386474/what-is-the-joint-density-function-of-a-three-level-mixed-effects-model) which are both  by the authors of the `lme4` package"
+MANTIS,mantis_q11173,"I have a table of points.Each row has a string <code>hex</code> field that stores a color code in hex format: <code>#000000</code>. I want to style my map so that each point displays with the color assigned to it.  But setting the CartoCSS <code>marker-fill</code> property to <code>[hex]</code> throws an error:<pre><code> #points {   marker-fill: [hex]; }</code></pre>Is there any way that I can color my points based on a color field in my table? 
+
+---
+
+ **[Message suivant]**
+
+ ""You are missing <code>;</code> at the end of your code. Check the following example:"" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ ""I have updated my example, which I typed incorrectly. But my production code includes a semicolon, and still throws an error: """"style0:3:2 Invalid value for marker-fill, the type color is expected. [hex] (of type field) was given."""""" 
+
+---
+
+ **[Message suivant]**
+
+",Can you share the link to your dataset? It should work both in Engine apps (as seen in my first screenshot) and in BUILDER (as in the new pictures added to my answer).,It's probably just  another way of color coding..If my answer works for you please accept it by clicking on the tick mark
+MANTIS,mantis_q2242,"""I'm very new in Ubuntu. I'm trying to upgrade my texlive in ubuntu 16.04 from 2015 to 2017 following this instruction. I have added these 2 file to my source list :<pre><code>deb http://ppa.launchpad.net/jonathonf/texlive-2017/ubuntu xenial main deb-src http://ppa.launchpad.net/jonathonf/texlive-2017/ubuntu xenial main </code></pre>And I run  <code>sudo apt-get update</code> successfully !but in next step I'm facing with error :<pre><code>sudo add-apt-repository ppa:jonathonf/texlive-2017Cannot add PPA: 'ppa:~jonathonf/ubuntu/texlive-2017'.ERROR: '~jonathonf' user or team does not exist.</code></pre>I did also :<pre><code>sudo apt-get install --reinstall ca-certificates</code></pre>and repeat the process but no chance ! Would be grateful if somebody could help ?!"" 
+
+---
+
+ **[Message suivant]**
+
+ ""You need not add the PPA twice. The easy way is via <code>add-apt-repository</code>. You find the PPA at this link,launchpad.net/~jonathonf/+archive/ubuntu/texlive-2017and it describes how to use it,<pre><code>sudo add-apt-repository ppa:jonathonf/texlive-2017sudo apt-get update</code></pre>These commands work for me (I tested in 16.04.1 LTS - live). Maybe there was a temporary glitch. Maybe there was an error because you try to add the PPA twice."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ I have mentioned that like you referred to in my question ! my problem is when I run the cammand that you mentioned, I'm getting error `Cannot add PPA: 'ppa:~jonathonf/ubuntu/texlive-2017'.ERROR: '~jonathonf' user or team does not exist.` 
+
+---
+
+ **[Message suivant]**
+
+","See update above. We can install gcc 7.3 and even 8 from other PPA (`ppa:jonathonf/gcc`). Great work, @JonathonF !@Ryan please remove your comment from here and open new question with your personal experience and complete details.","Strange that it works for me but not for you. What happens if you try again?@AliHadjihoseini, Maybe you can remove those lines, that you added manually into your `sources.list` file. And after that try via `add-apt-repository`. This way you need not add the key separately (it should work automatically)."
+MANTIS,mantis_q12353,"""Computing 3D seismic fold is quite straight forward, for those unfamiliar with the concept, below is a brief explanation.  Background information (Seismic 101) :Seismic Fold:Basically, I have (several hundred thousands of) <code>Receiver Points</code> (<code>RP</code>) and <code>Source Points</code> (<code>SP</code>). Each <code>Source</code>, when activated, will send a signal that will be picked up by (several thousands of) <code>Receivers</code>.
+For every pair <code>(SP, RP)</code> I will compute the <code>Midpoint</code>, i.e. the coordinates of the middle of the segment (the <code>ray</code>) joining the 2 points and find out in which <code>bin</code> this <code>Midpoint</code> falls.
+The <code>bins grid</code> is a regular grid (usually orthogonal/rectangular) with cell dimensions being <code>RP_i/2</code> and <code>SP_i/2</code> where <code>_i</code> denotes the interval between points (these intervals are fixed as they are taken on the theoretical RP/SP grid).
+The <code>Fold Map</code> will then simply be a heatmap with the values being the number of <code>Midpoints</code> falling into each <code>bin</code> of the <code>bins grid</code>.
+Ideally, I'll need to be able to filter the <code>Midpoints</code> based on the <code>Offset</code> length. The <code>offset</code> being the length of the <code>ray</code> (i.e. the distance between <code>SP</code> and <code>RP</code> for the pair considered).
+A typical <code>fold map</code> may look like this.SPS (Shell Processing Support) files:The information source is usually in the form of 3 <code>SPS</code> files (see format definition here). I am able to load the 2 <code>Point</code> files (R and S) into <code>QGIS</code> so I get all Receivers and Sources positions.
+The <code>Relation</code> (X) file gives the list of all <code>RP</code> listening to each <code>SP</code>.  The problem:The problem lies mainly in the numbers. I have to compute several million <code>rays</code> so every nano-second will count here!
+The <code>X file</code> lists the points by name (or rather, number) so I'll have to lookup the coordinates of these points every single time as I'm reading through the <code>X file</code>.
+Is there an efficient way to load my <code>R</code> and <code>S</code> files in memory (ideally caching only a portion of these files at a time) and how should I hold the information of the computed <code>Midpoints</code> ? In memory ? In a <code>numpy</code> array ? Is there a <code>QGIS</code> object that would be particularly suitable for this kind of extensive computation ?"" 
+
+---
+
+ **[Message suivant]**
+
+ ""This is too long for a comment, but it is not the answer to your issues.Unfortunately, there is no avoiding that bottleneck.You could theoretically set limits to the calculation ranges by point numbers (Line &amp; Station,  or  Track &amp; Bin) if you know the spacing, and make general assumptions with regards to the distance from a receiver point to a source point based upon station interval, and line spacingYou obviously know the following, but I will expound on it anyway.You are going to have two loops, or do while statements.One will fetch each receiver point (R File), storing the coordinate values, and other pertinent information.The second loop will fetch each source point (S File), calculate the inverse or ray distance, and also take the x, and y coordinates of both points, sum the x values and the y values then divide each sum by 2 to derive the mid point coordinates.I would also take the inverse or ray distance, and divide this by two, this will give you the depth of the record, and I would calculate the azimuth of the ray. Then write all of these values to another file. (The relations or X file).So in the third file I would write the Receiver Point Number, Source Point Number, MidpointX, MidpointY, Radial_distance, Half_Distance, Azimuth.You could add other info if you needed to such as Receiver Coordinates, and Source Coordinates, Preplot or Postplot Designators and so on.Then after each source point has been looped through, you return to the receiver point file, fetch the next one (first loop), then repeat the process with the source points (second loop) until all of the points in both files are looped through.It is very calculation intensive, but the math is simple for the most part.Optimization of the loops is one of the most important things here.On a seismic grid with 8000 receiver points, and 8000 source points, you will have 64,000,000 mid point locations, and in all honesty, that is not a very intense grid compared to some I have worked on.The rest of this is not meant to discourage you, but I see the road you are taking, and it will progress to the following.There is a lot more fun to be had when you start to analyze azimuthal distribution, and create spider graphs for each bin. Then querying specific depth ranges for fold.Other fun will be the blending of surveyed locations with unsurveyed locations for design purposes and to avoid the striping of the data.It can then turn into something even more mind boggling when you start turning off specific points within the grid, and have to regenerate the counts for the mid point locations within specific bins based upon the loss of these points.Have as much fun with this as you can.Take small steps, and work on optimizing the loops first.So in a follow up to this, out of morbid curiosity, insanity, and stubbornness, I decided to try this using only the core tools, and processing tools contained within QGIS 3.4.3.I will not go into full step by step details, but I started by using the regular points generator, and built a grid of points on a 220 ft. by 220 ft. grid for both receiver points, and source points. I then rotated both grids using the processing toolbox rotate function.After that I built a polygon grid of 110 ft by 110 ft, and then translated and rotated the grid so the points were centered within the polygons.I then queried out the desired points from the receiver and source point files.Then I ran the Distance Matrix utility from the Vector Menu (it is also part of the Processing Toolbox)This created a record for each point on the Receiver Point Grid related to each point on the Source Point Grid.In all there are 3,128,160 combinations.The distance matrix file gives you an input and target point id, and the distance between the two points, which in many cases was found to be erroneous unless I am misunderstanding what is happening there.I then joined the receiver point file with the distance matrix file exporting the coordinates of the receiver points associated with the file.I repeated the above process using, this time joining the source point file with exported file.From there I added a mid point x and y field, as well as a mid point distance field, and updated those fields using the SQL functions.This was a very time consuming process with frequent crashes along the way.I attempted this using both shape files, and spatialite files. The spatialite files seemed to be more stable at least initially. (After each crash, I rebooted the computer.)I took the file with the calculated midpoint data, and exported a CSV file of containing the Receiver Point ID, Source Point ID, Mid Point X, Mid Point Y, and the Mid Point Distance.I then opened Mid Point CSV file, and exported it as a Spatialite file.The point count was correct, however there seems to be an error in the coordinates as some of the points fall outside of the boundary of the Bin Grid.I have not tracked this error down as of yet by comparing the joined receiver and source grid coordinates with the original coordinates, that is next on my list.Out of curiosity I decided to calculate a full fold map with what I came up with. I knew it would be wrong, but I wanted to see how long it would take counting the points in polygons. (Using the first run shape files)It took a little over eight hours using the Points in Polygons routine.I am not going to run it again using the spatialite files until I solve the rotational issues which is apparent in both the shape files of the first run, and the spatialite files of the second run.I am still having problems wrapping my head around using Python and looping through both the receiver and source point files staying with a single point in the receiver file while calculating mid points and distances to each source point from that receiver point, then moving to the next receiver point and repeating this process until all points are calculated.The rest of the math is easy, but the looping thing has given me fits.All I want to write out to a CSV file is the Receiver Point ID, Source Point ID, Mid Point X &amp; Y coordinates, and the Distance or Depth.  That is the easy part for me so far.Given what I have experienced with the above experiment, I hope you have a truly monstrous computer, huge hard drives, and a ridiculous amount of RAM, along with an inordinate amount of patience."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ I'm thinking down that road too... but for now, it would be nice to be able to compute even the basic full fold (all offsets). From a theoretical grid, we can probably save a lot of computation by using grid locations, but I'd like to be able to compute from a postplot also and use actual locations (you cannot assume grid locations then). Also, the project I'm looking at right now has about 800,000 SP and 6,656 RP for each so we're talking 5.3 billion midpoints... I'll keep studying what `numpy` has to offer as I'm sure there are a few functions that can handle most of the heavy lifting. 
+
+---
+
+ **[Message suivant]**
+
+ With that density of source points, are these in a source point array where you can calculate a center of the group rather than using each individual source point location? If you are able, that is the way I would approach this depending on the nominal fold desired. 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ Nope, these are single sources (groups of 1) so there is no shortcut here... 
+
+---
+
+ **[Message suivant]**
+
+ Ouch, or wow or something.There is probably a simple algorithm which would give you preplot full fold based upon grid number separation between the receiver and source points but that will only give theoretical, or design fold, and not real world fold.My lack of familiarity with Numpy puts me at a disadvantage here.The brute force routines that I wrote to calculate midpoints took about 5 minutes for a 10000 by 10000 grid, but it wrote a lot of data beyond the midpoint locations, and it was on a slow computer.I would not want to calculate the fold on your grid with that computer. 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ I believe preplot full fold should be easy as it is for the main part applying the same pattern over and over and just identifying edge cases where not all offsets are present. That should be manageable. But real world data is where it gets interesting... 
+
+---
+
+ **[Message suivant]**
+
+ I agree with you, and it may also be applicable to postplot locations which are offset within a specific radius of the design location, I just haven't put too much thought or work into something of that nature. The logic involved in making that decision for each point may actually slow the process though. 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ IRL, there should be no easy way to predict how the pattern is altered and I believe the overhead for checking how the actual data deviates from the theoretical pattern will be more costly than doing the computation itself straight away. 
+
+---
+
+ **[Message suivant]**
+
+ Yes, it does create quite a few more variables to deal with.I need to talk with someone much more knowledgeable than I am about how the commercial software I have seen in use is capable of generating the fold plots so quickly.I am not a geophysicist, seismologist, or geologist, I am just a surveyor with an interest, and have been involved in the energy/mineral exploration industry for about 40 years.I still feel a standalone, external application devoted to simply crunching the numbers will be a more productive solution.I have also never seen a fold plot using five billion midpoints. 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ I agree that a standalone application would be best, but I'm really not up to the task. I'm struggling enough trying to write decent Python code in QGIS... and the integration in QGIS has some real appeal. I'm willing to trade some speed for this. 
+
+---
+
+ **[Message suivant]**
+
+","Ouch, or wow or something.There is probably a simple algorithm which would give you preplot full fold based upon grid number separation between the receiver and source points but that will only give theoretical, or design fold, and not real world fold.My lack of familiarity with Numpy puts me at a disadvantage here.The brute force routines that I wrote to calculate midpoints took about 5 minutes for a 10000 by 10000 grid, but it wrote a lot of data beyond the midpoint locations, and it was on a slow computer.I would not want to calculate the fold on your grid with that computer.","With that density of source points, are these in a source point array where you can calculate a center of the group rather than using each individual source point location? If you are able, that is the way I would approach this depending on the nominal fold desired."
+MANTIS,mantis_q528,"When I plug my iPhone 7 (iOS 11.3) into my Mac (macOS 10.13.4), I see the following categories in iTunes (12.7.4):I don't see any way to do backups.  How do I do local backups with the latest iOS / MacOS? 
+
+---
+
+ **[Message suivant]**
+
+ ""In the iTunes window, click on Summary. Under Backups, click on Back Up Now button."" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ there's no summary window that's what I'm showing in my screenshot 
+
+---
+
+ **[Message suivant]**
+
+",Yay! Safari 11.1 fixes this in macOS 10.13.4,"@sam That's good. At times I too though of adopting the practise of keeping OS installer backups, but have not done yet. I hope Apple doesn't start the practise of signing macOS releases just like they do for iOS."
+MANTIS,mantis_q5073,"""The last upgrading from Mozilla Firefox has a lost button.When we go to """"Preferences"""", then to """"Privacy and Security"""", then to """"Clean History"""", if we want to clean all... We don't have any button to do that!What's happened with that button?How can we clean the navigator history?NEW DATA:I discovered that this problem is ONLY present with screen monitors that have less than 1024 pixels of height!I discovered it, because the old monitor of one of my desktp PC died. So, I had to use another monitor with 1280x1024 pixels of resolution and... Now I can see the lost button!So... The issue is about... How to get Firefox shows those buttons with less than 1024 pixels height resolution?These are the images to clear the issue:As you can see in the second image, the [Clear All] button doesn't appear."" 
+
+---
+
+ **[Message suivant]**
+
+ ""A shortcut still present in Firefox 64 is to press Control+Shift+Delete at the same time to bring up the Clear Recent History window. Alternatively, open Preferences > Privacy &amp; Security > History.Carefully select what you want to clear by ticking or unticking the relevant boxes. Then, click on the dropdown next to Time range to clear and choose Everything:"" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ In my system the [CONTROL]+[SHIFT]+[DELETE] combination gives me a session restart! Nothing related with Firefox! 
+
+---
+
+ **[Message suivant]**
+
+","In that case, just follow the method you use to reach the *Preferences > Privacy > History* section. Do you then not see the image above?","""@rahi Works pretty well for me: https://i.stack.imgur.com/NaEIO.png. Should not be necessary, but try changing the `""""name:""""` too in `metadata.json`."""
+MANTIS,mantis_q6371,"I want the parameters in Age and Gender to accept more than one value<pre><code>    Create Procedure [Admission].[SelectPlayerData]@MembershipNumber varchar(20),@PlayerName varchar(70),@PlayerNameEnglish varchar(70),@Age varchar(200),@Gender varchar(100),@Mobile1 varchar(20),@Mobile2 varchar(20)asset nocount onbegin Declare @BaseQuery nvarchar(max) ='SELECT        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,                          Evaluation.Players.Mobile1, Evaluation.Players.Mobile2FROM            Evaluation.Players INNER JOIN                         Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'    , @ParamList nvarchar(max) = N'@p1 varchar(20), @p2 varchar(70), @p3 varchar(70),@p4 varchar(200), @p5 varchar(100), @p6 varchar(20) , @p7 varchar(20)'    , @WhereClause nvarchar(max) = ' WHERE 1=1';IF @MembershipNumber IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = @p1';    ENDIF @PlayerName IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = @p2';    ENDIF @PlayerNameEnglish IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = @p3';    ENDIF @Age IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in (@p4)';    ENDIF @Gender IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in (@p5)';    END    IF @Mobile1 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = @p6';    END    IF @Mobile2 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = @p7';    END    SET @BaseQuery = @BaseQuery + @WhereClause;    EXECUTE sp_executesql @BaseQuery, @ParamList,     @p1 = @MembershipNumber,     @p2 = @PlayerName,     @p3 = @PlayerNameEnglish,     @p4 = @Age,     @p5 = @Gender,     @p6 = @Mobile1,     @p7 = @Mobile2;end         </code></pre>the following execution does not work properly<pre><code>USE [SportsActivities]GODECLARE @return_value intEXEC    @return_value = [Admission].[SelectPlayerData]        @MembershipNumber = NULL,        @PlayerName = NULL,        @PlayerNameEnglish = NULL,        @Age = N'12,14',        @Gender = N'Male,Female',        @Mobile1 = NULL,        @Mobile2 = NULLSELECT  'Return Value' = @return_valueGO</code></pre> 
+
+---
+
+ **[Message suivant]**
+
+ ""I think that you need to split up the male + female values, so you can add the ' and the comma's characters for each gender. If you are on sql 2016 you could use string split:Example for SQL Server 2016 and up:<pre><code>DECLARE @gender nvarchar(255)= N'Male,Female';DECLARE @genderlist nvarchar(1000);SET @genderlist=(select ''''+ value+''',' from string_split(@Gender,',')FOR XML PATH(''));select @genderlist = left(@genderlist,len(@genderlist)-1);select @genderlist;</code></pre>SQL Server 2012 Example<pre><code>declare @gender nvarchar(255)= N'Male,Female'declare @genderlist nvarchar(1000)declare @genderlist2 table (genders nvarchar(1000))declare @temp intINSERT INTO @genderlist2(genders)SELECT Split.a.value('.', 'NVARCHAR(MAX)')  as aFROM(    SELECT CAST('&lt;X&gt;'+REPLACE(@Gender, ',', '&lt;/X&gt;&lt;X&gt;')+'&lt;/X&gt;' AS XML) AS String) AS ACROSS APPLY String.nodes('/X') AS Split(a) set @genderlist=(select ''''+genders+''',' from @genderlist2for xml path(''))select @genderlist = left(@genderlist,len(@genderlist)-1);select @genderlist</code></pre>SourceAnother issue apart from splitting your string: One other issue found, is that you need to keep the variables out of the where string created, otherwise the variable will not change to what it is holding. E.G. @p4 would have stayed @p4 instead of parsing to 12,14. I changed it to @Age in my example.SQL Server 2012 Full procedure <pre><code>   ALTER Procedure [Evaluation].[SelectPlayerData]    @MembershipNumber varchar(20),    @PlayerName varchar(70),    @PlayerNameEnglish varchar(70),    @Age varchar(200),    @Gender varchar(100),    @Mobile1 varchar(20),    @Mobile2 varchar(20)    as    set nocount on    begin     Declare @BaseQuery nvarchar(max)     ='SELECT        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,                              Evaluation.Players.Mobile1, Evaluation.Players.Mobile2    FROM            Evaluation.Players INNER JOIN                             Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'        , @ParamList nvarchar(max) = N'@MembershipNumber varchar(20), @PlayerName varchar(70), @PlayerNameEnglish varchar(70),@Age varchar(200), @Gender varchar(100), @Mobile1 varchar(20) , @Mobile2 varchar(20)'        , @WhereClause nvarchar(max) = ' WHERE 1=1';    IF @MembershipNumber IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = '+@MembershipNumber+'';        END    IF @PlayerName IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = '+@PlayerName+'';        END    IF @PlayerNameEnglish IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = '+@PlayerNameEnglish+'';        END    IF @Age IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in ('+@Age+')';        END    IF @Gender IS NOT NULL        BEGIN        declare @genderlist nvarchar(1000)        declare @genderlist2 table (genders nvarchar(1000))        declare @temp int        INSERT INTO @genderlist2(genders)        SELECT Split.a.value('.', 'NVARCHAR(MAX)')  as a        FROM        (            SELECT CAST('&lt;X&gt;'+REPLACE(@Gender, ',', '&lt;/X&gt;&lt;X&gt;')+'&lt;/X&gt;' AS XML) AS String        ) AS A        CROSS APPLY String.nodes('/X')         AS Split(a)         set @genderlist=(        select ''''+genders+''',' from @genderlist2        for xml path(''))        select @genderlist = left(@genderlist,len(@genderlist)-1);            SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in ('+@genderlist+')';        END        IF @Mobile1 IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = '+@Mobile1+'';        END        IF @Mobile2 IS NOT NULL        BEGIN            SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = '+@Mobile2+'';        END        SET @BaseQuery = @BaseQuery + @WhereClause;       EXECUTE sp_executesql @BaseQuery, @ParamList,         @MembershipNumber = @MembershipNumber,         @PlayerName = @PlayerName,         @PlayerNameEnglish = @PlayerNameEnglish,         @Age = @Age,         @Gender = @Genderlist,         @Mobile1 = @Mobile1,         @Mobile2 = @Mobile2;    end         </code></pre>SQL Server 2016 Full procedure<pre><code>     ALTER Procedure [Evaluation].[SelectPlayerData]@MembershipNumber varchar(20),@PlayerName varchar(70),@PlayerNameEnglish varchar(70),@Age varchar(200),@Gender varchar(100),@Mobile1 varchar(20),@Mobile2 varchar(20)asset nocount onbegin Declare @BaseQuery nvarchar(max) ='SELECT        Evaluation.Players.PlayerID, Evaluation.Players.MembershipNumber, Evaluation.Players.PlayerName, Evaluation.Players.PlayerNameEnglish, Evaluation.Players.Age, Evaluation.Gender.GenderEnglish,                          Evaluation.Players.Mobile1, Evaluation.Players.Mobile2FROM            Evaluation.Players INNER JOIN                         Evaluation.Gender ON Evaluation.Players.GenderID = Evaluation.Gender.GenderID'    , @ParamList nvarchar(max) = N'@MembershipNumber varchar(20), @PlayerName varchar(70), @PlayerNameEnglish varchar(70),@Age varchar(200), @Gender varchar(100), @Mobile1 varchar(20) , @Mobile2 varchar(20)'    , @WhereClause nvarchar(max) = ' WHERE 1=1';IF @MembershipNumber IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.MembershipNumber = '+@MembershipNumber+'';    ENDIF @PlayerName IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerName = '+@PlayerName+'';    ENDIF @PlayerNameEnglish IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.PlayerNameEnglish = '+@PlayerNameEnglish+'';    ENDIF @Age IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Age in ('+@Age+')';    ENDIF @Gender IS NOT NULL    BEGIN    DECLARE @genderlist nvarchar(1000);    SET @genderlist=(select ''''+ value+''',' from string_split(@Gender,',')    FOR XML PATH(''));    SELECT @genderlist = left(@genderlist,len(@genderlist)-1);        SET @WhereClause = @WhereClause + ' AND Evaluation.Gender.GenderEnglish in ('+@genderlist+')';    END    IF @Mobile1 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile1 = '+@Mobile1+'';    END    IF @Mobile2 IS NOT NULL    BEGIN        SET @WhereClause = @WhereClause + ' AND Evaluation.Players.Mobile2 = '+@Mobile2+'';    END    SET @BaseQuery = @BaseQuery + @WhereClause;   EXECUTE sp_executesql @BaseQuery, @ParamList,     @MembershipNumber = @MembershipNumber,     @PlayerName = @PlayerName,     @PlayerNameEnglish = @PlayerNameEnglish,     @Age = @Age,     @Gender = @Genderlist,     @Mobile1 = @Mobile1,     @Mobile2 = @Mobile2;end         </code></pre>Test 1<pre><code>create schema Evaluation        create table Evaluation.Players(       PlayerID int,  MembershipNumber int,  PlayerName nvarchar(255),  PlayerNameEnglish nvarchar(255),  Age varchar(200),                           Mobile1 char(15),Mobile2 char(15) , GenderID tinyint)        create table Evaluation.Gender(GenderID tinyint, GenderEnglish nvarchar(255))        insert into Evaluation.players VALUES (1,1,'Randi','Randi',12,123214215215,12421421422,1)        insert into Evaluation.players VALUES (2,2,'Gandalf','Gandalf',142,123214215215,12421421422,1)        insert into Evaluation.players VALUES (3,3,'Gandalf','Frodo',14,123214215215,12421421422,1)        insert into Evaluation.gender VALUES(1,'Male')        insert into Evaluation.gender VALUES(2,'Female')DECLARE @return_value intEXEC    @return_value = Evaluation.[SelectPlayerData]        @MembershipNumber = NULL,        @PlayerName = NULL,        @PlayerNameEnglish = NULL,        @Age = '12,14',        @Gender =  NULL,        @Mobile1 = NULL,        @Mobile2 = NULL   SELECT  'Return Value' = @return_value</code></pre>Result<pre><code>&gt;  PlayerID MembershipNumber    PlayerName  PlayerNameEnglish   Age GenderEnglish   Mobile1 Mobile2&gt;     1 1   Randi   Randi   12  Male    123214215215    12421421422    &gt;     3 3   Gandalf Frodo   14  Male    123214215215    12421421422</code></pre>Test 2Extra insert<pre><code>INSERT INTO Evaluation.players VALUES (4,4,'Emma','Watson',12,123214215215,12421421422,2);</code></pre>Execute proc<pre><code> DECLARE @return_value intEXEC    @return_value = Evaluation.[SelectPlayerData]        @MembershipNumber = NULL,        @PlayerName = NULL,        @PlayerNameEnglish = NULL,        @Age = '12,14',        @Gender =  'Male,Female',        @Mobile1 = NULL,        @Mobile2 = NULL</code></pre>Result<pre><code>PlayerID    MembershipNumber    PlayerName  PlayerNameEnglish   Age GenderEnglish   Mobile1 Mobile21   1   Randi   Randi   12  Male    123214215215    12421421422    3   3   Gandalf Frodo   14  Male    123214215215    12421421422    4   4   Emma    Watson  12  Female  123214215215    12421421422    </code></pre>"" 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ unfortunately, I am using SQL server 2012 
+
+---
+
+ **[Message suivant]**
+
+ There is also an other issue with th variables in your where clause not parsing. I will update my solution. 
+
+---
+
+ **[Changement d'interlocuteur]**
+
+ """"""string_split"""" does not work on my server,But I can use the GenderID filtered instead of Gender ;)"" 
+
+---
+
+ **[Message suivant]**
+
+","Yes, and that part should be changed to a custom split, like the one @ScottHodgin showed. The other issue I had when testing your proc and it not giving results was due to the parameters in the where clause not being escaped.","Yes you could. Do bear in mind that in order to properly evaluate the effects of the tuning, I would use different sets for evaluation and tuning of hyperparameters."
