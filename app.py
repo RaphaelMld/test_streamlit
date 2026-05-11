@@ -47,11 +47,21 @@ if 'random_order' not in st.session_state:
 # --- ÉCRAN DE CONNEXION ---
 if st.session_state.user is None:
     st.title("Plateforme d'Évaluation")
+    # guide utilisateur
+    st.markdown("""
+        ### Bienvenue 
+        Pour évaluer les modèles, merci de suivre ces quelques règles :
+        *  **Identifiant :** Utilisez un pseudo pour rester totalement anonyme, ou votre prénom si cela vous est égal.
+        *  **Sauvegarde auto :** Vous pouvez vous arrêter à tout moment en fermant la page.
+        *  **Reprise :** Pour reprendre votre progression plus tard, **entrez exactement le même identifiant** (attention aux majuscules et aux espaces).
+        *  **Double Aveugle :** Vous évaluerez deux documents (A et B) pour chaque requête. Ne cherchez pas à deviner le modèle, notez juste la pertinence 
+    """)
     user_input = st.text_input("Entrez votre nom ou identifiant pour commencer :")
     
     if st.button("Démarrer l'évaluation"):
         if user_input:
-            st.session_state.user = user_input
+            clean_user = user_input.strip() 
+            st.session_state.user = clean_user
             with st.spinner("Vérification de votre progression..."):
                 all_records = worksheet.get_all_records()
                 count = sum(1 for row in all_records if str(row.get('username', '')) == user_input)
