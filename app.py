@@ -16,10 +16,7 @@ DATASET_INSTRUCTIONS = {
 # --- CONNEXION DIRECTE GSPREAD ---
 @st.cache_resource
 def get_worksheet():
-    # On récupère les identifiants depuis les Secrets Streamlit
     creds_dict = st.secrets["connections"]["gsheets"]
-    
-    # On s'authentifie officiellement auprès de Google
     credentials = Credentials.from_service_account_info(
         creds_dict,
         scopes=[
@@ -28,11 +25,8 @@ def get_worksheet():
         ]
     )
     client = gspread.authorize(credentials)
-    
-    # On ouvre le fichier cible
     return client.open_by_url(creds_dict["spreadsheet"]).worksheet("Sheet1")
 
-# Initialisation de la connexion Google Sheets
 worksheet = get_worksheet()
 
 # --- CHARGEMENT DES QUESTIONS ---
@@ -48,7 +42,6 @@ if 'user' not in st.session_state:
 if 'current_idx' not in st.session_state:
     st.session_state.current_idx = 0
 if 'random_order' not in st.session_state:
-    # 0 = Baseline, 1 = T-WSLS. On initialise le mélange pour la première question.
     st.session_state.random_order = random.sample([0, 1], 2)
 
 # --- ÉCRAN DE CONNEXION ---
@@ -59,14 +52,10 @@ if st.session_state.user is None:
     if st.button("Démarrer l'évaluation"):
         if user_input:
             st.session_state.user = user_input
-            
             with st.spinner("Vérification de votre progression..."):
-                # On lit les données directement pour ne rien écraser
                 all_records = worksheet.get_all_records()
-                # On compte combien de questions cet utilisateur a déjà évaluées
                 count = sum(1 for row in all_records if str(row.get('username', '')) == user_input)
                 st.session_state.current_idx = count
-                
             st.rerun()
         else:
             st.error("Veuillez entrer un identifiant.")
@@ -81,7 +70,6 @@ def save_score(score_a, score_b):
         score_twsls = score_b
         modele_en_A = "baseline"
     else:
-        # L'index 1 était en premier (A). Donc A = T-WSLS, B = Baseline
         score_baseline = score_b
         score_twsls = score_a
         modele_en_A = "twsls"
@@ -97,10 +85,8 @@ def save_score(score_a, score_b):
         modele_en_A        
     ]
     
-    # Ajout instantané à la fin du fichier
     worksheet.append_row(new_row)
     
-    # On passe à la suite et on MÉLANGE à nouveau pour la prochaine question !
     st.session_state.current_idx += 1
     st.session_state.random_order = random.sample([0, 1], 2)
 
@@ -114,17 +100,39 @@ if st.session_state.current_idx < total_q:
     st.write(f"Question **{idx + 1}** sur {total_q}")
     
     curr_q = questions_df.iloc[idx]
-    
     dataset_name = str(curr_q['dataset']).upper().strip()
     
-    # Affichage des consignes spécifiques
-    if dataset_name in DATASET_INSTRUCTIONS:
-        st.info(DATASET_INSTRUCTIONS[dataset_name])
-    else:
-        st.info(f"Dataset: {dataset_name} - Évaluez la pertinence du document par rapport à la requête.")
+    if dataset_name == "MANTIS":
+        st.info(" **MANTIS (Conversation) :** Jugez si le document répond à la *Dernière question*, en vous aidant de l'historique si besoin.")
+        
+        # Découpage du texte en liste de messages
+        contexte_brut = str(curr_q['context'])
+        messages = contexte_brut.split('|||SPLIT|||')
+        
+        historique = messages[:-1] # Tout sauf le dernier
+        derniere_question = messages[-1] # Uniquement le dernier
+        
+        # On cache l'historique dans un expander fermé par défaut
+        if len(historique) > 0:
+            with st.expander(" Cliquez ici pour voir l'historique de la conversation", expanded=False):
+                for i, msg in enumerate(historique):
+                    st.caption(f"Message {i+1}")
+                    st.markdown(msg.strip())
+                    st.divider()
+        
+        st.warning(" **Dernière question de l'utilisateur :**")
+        st.markdown(derniere_question.strip())
 
-    with st.expander("Voir la requête à évaluer", expanded=True):
-        st.markdown(curr_q['context'])
+    else:
+        if dataset_name in DATASET_INSTRUCTIONS:
+            st.info(DATASET_INSTRUCTIONS[dataset_name])
+        else:
+            st.info(f"Dataset: {dataset_name} - Évaluez la pertinence du document.")
+            
+        with st.expander("Voir la requête à évaluer", expanded=True):
+            st.markdown(str(curr_q['context']))
+
+    st.markdown("---") # Ligne de séparation avant les documents
 
     # Affichage A/B anonymisé
     responses = [curr_q['response_baseline'], curr_q['response_twsls']]
@@ -133,18 +141,15 @@ if st.session_state.current_idx < total_q:
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("Document A")
-        # On affiche le document selon l'ordre mélangé
         st.markdown(responses[order[0]])
         s_a = st.select_slider("Note A :", options=[1,2,3,4,5], value=3, key=f"a{idx}")
         
     with col2:
         st.subheader("Document B")
-        # On affiche l'autre document
         st.markdown(responses[order[1]])
         s_b = st.select_slider("Note B :", options=[1,2,3,4,5], value=3, key=f"b{idx}")
 
     st.markdown("---")
-    # Bouton de validation
     if st.button("Valider mes notes", type="primary", use_container_width=True):
         save_score(s_a, s_b)
         st.rerun()
