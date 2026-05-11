@@ -1,5 +1,29 @@
 dataset,query_id,context,response_baseline,response_twsls
-MANTIS,mantis_q13266,"My question is essentially: How is conservation of energy held in quark transitions?Several quark transitions seem to break energy conservation, such as$$ d \rightarrow c W^{-}$$$$d \rightarrow t W^{-}$$where the masses are$$m_{d} \approx 3-7 \ \textrm{MeV}$$$$m_{c} \approx 1.25\ \textrm{GeV}$$$$m_{t} \approx 172\ \textrm{GeV}$$$$m_{W^{-}} \approx 80.4 \ \textrm{GeV}$$Are all these transitions (and others) forbidden according to conservation of energy? Clearly they are perfectly allowed transitions, and so my intuition tells me the reason is due to the effective masses of quarks within a bound system.  
+MANTIS,mantis_q13266,"My question is essentially: How is conservation of energy held in quark transitions?Several quark transitions seem to break energy conservation, such as
+$$
+ d \rightarrow c W^{-}
+$$
+
+$$
+d \rightarrow t W^{-}
+$$
+where the masses are
+$$
+m_{d} \approx 3-7 \ \textrm{MeV}
+$$
+
+$$
+m_{c} \approx 1.25\ \textrm{GeV}
+$$
+
+$$
+m_{t} \approx 172\ \textrm{GeV}
+$$
+
+$$
+m_{W^{-}} \approx 80.4 \ \textrm{GeV}
+$$
+Are all these transitions (and others) forbidden according to conservation of energy? Clearly they are perfectly allowed transitions, and so my intuition tells me the reason is due to the effective masses of quarks within a bound system.  
 
 ---
 
@@ -173,14 +197,38 @@ MANTIS,mantis_q5024,"""I am at a bit of a loss.  I am able to perform an nslooku
 
 ",What are you using to determine if systemd-resolved's dns caching is enabled or not?,@SlavaFominII I agree that hard-wiring DNS servers is not optimal. The temporary changes to /etc/nsswitch.conf probably require a reboot to stick. I've put up Update #6 for you to test while monitoring `resolvectl` instead of watching `/etc/resolv.conf`. Report back :-)
 MANTIS,mantis_q13776,"I have a home work:
->   Consider a head-on collision of a 'bullet' of rest mass $M$ with a stationary 'target' of rest mass $m$. Prove that the post-collision γ-factor of the bullet cannot exceed:$$(m^2 + M^2)/(2mM).$$   [Hint: if $P, P'$ are the pre- and post- collision four-momenta of the bullet, and $Q, Q'$ those of the target,show, by going to the CM frame, that $(P' − Q)^2 ≥ 0$; in fact, in the CM frame $P' − Q$ has no spatial components.] 
+>   Consider a head-on collision of a 'bullet' of rest mass $M$ with a stationary 'target' of rest mass $m$. Prove that the post-collision γ-factor of the bullet cannot exceed:
+$$
+(m^2 + M^2)/(2mM).
+$$
+   [Hint: if $P, P'$ are the pre- and post- collision four-momenta of the bullet, and $Q, Q'$ those of the target,show, by going to the CM frame, that $(P' − Q)^2 ≥ 0$; in fact, in the CM frame $P' − Q$ has no spatial components.] 
 I have solved problem from the hint that $(P' − Q)^2 ≥ 0$ and $P' − Q$ should have non-spatial component.The first hint is easy, because four-momentum is time-like hence it should always be non-negative. What i don't understand is that why $P' − Q$ should have non-spatial component in COM? 
 
 ---
 
  **[Message suivant]**
 
- ""(The problem in the OP appears to be from Rindler, Relativity: Special, General, and Cosmological, 2ed, Exercise 6.7.)The statement""""in the CM [zero-momentum, center of momentum] frame $(P'-Q)$ has no spatial components"""" means that $(P'-Q)$ is parallel to the total-4-momentum $(P+Q)$, also $(P'+Q')$ [by conservation]. This appears to hold true when the collision is elastic.As I was writing this, I eventually arrived at a simpler solution in the end.But I've kept what I started with because it may be useful to others (as it was to me).Inspired by the Mandelstam variables ( https://en.wikipedia.org/wiki/Mandelstam_variables )(which I am learning more about)I can prove it using dot-products... but can't easily explain it in those terms... but I suspect there is a simpler method using dot-products using the 4-momenta directly... when things get sorted out.In these terms, let me define the following 4-vectors: $S=P+Q=P'+Q'$ (the total-4-momentum) ,$T=P-P'=Q'-Q$, (the 4-momentum transfer)  and$U=P-Q'=P'-Q$ (some kind of cross term),where I have used momentum conservation ($P+Q=P'+Q'$) to write the second equality in each.It's easy to show that $S\cdot T=0$ (the momentum-transfer is orthogonal to the total-momentum).What you want to show is that,for elastic collisions, $U$ is parallel to $S$ by showing that $U\cdot T=0$.(By elastic, we have, in addition to $P+Q=P'+Q'$, the conditions $P^2=P'^2$ and $Q^2=Q'^2$.)First note that $$S^2=(P+Q)^2=P^2+2P\cdot Q+Q^2.$$Next, note that $$S+T+U=(3P+Q-P'-Q')=2P,$$ where I invoked momentum conservation.It can be shown that $S^2+T^2+U^2=P^2+Q^2+P'^2+Q'^2$, which equals $2(P^2+Q^2)$ in the elastic case.By squaring $T+U=2P-S=P-Q$ and isolating $2T\cdot U$,I get$$\begin{align}   2 T\cdot U &amp;=P^2-2P\cdot Q+Q^2 -[T^2+U^2]\\&amp;=P^2-2P\cdot Q+Q^2 -[2(P^2+Q^2)-S^2]\\&amp;=-P^2-2P\cdot Q-Q^2 +S^2\\&amp;=0\end{align}$$There's likely a simpler calculation with dot-products [without invoking Mandelstam] which might be suggested by the following energy-momentum diagram. (update: there is)Now here's an energy-momentum diagram, which suggests a simpler geometric interpretation.The 4-vector $U=P'-Q=P'-Q_{copy}$ is shown, connecting the tip of $Q_{copy}$ to $P'$.The momentum-transfer segment $T$ (connecting A and C), which is orthogonal to the total-momentum $S$, is actually bisected by $S$ when the collision is elastic... that is when $C$ (the tip of $P'$ and the tail of $Q'$) is at the intersection of the two mass-shells determined by $P$ and $Q$. So, this means that in the zero-momentum COM frame,the spatial part of $Q$ (which is projected onto half of $T$) is equal to the spatial part of $P'$ (which is projected onto the other half of $T$). Thus, the difference in their spatial components is zero.Thus, $U\cdot T=(P'-Q)\cdot T=P'\cdot T - Q\cdot T=P'_{x,COM}-Q_{x,COM}=0$.Okay, after writing this up and thinking about it some more... Here is a simpler calculation. (I'll leave the earlier stuff up there because it may be useful. It was to me.)$$\begin{align}0&amp;\stackrel{?}{=}U\cdot T\\&amp;=(P'-Q)\cdot T\\&amp;=(P'-[P'+Q'-P])\cdot T \qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\cdot T\\&amp;=(P'+P)\cdot T-[P'+Q']\cdot T\\&amp;=(P'+P)\cdot T- \qquad 0\qquad\quad \mbox{since $S\cdot T=0$}\\&amp;=(P'+P)\cdot (P-P')\\&amp;=P'^2-P^2\\&amp;=\qquad 0 \qquad  \qquad \qquad\qquad \mbox{since $P'^2=P^2$ for an elastic collision}\\\end{align}$$One more update. I think the following variant of the last calculation constructs $U$ as a multiple of $S$:$$\begin{align}U&amp;=(P'-Q)\\&amp;=(P'-[P'+Q'-P])\qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\\&amp;=(P'+P)-[P'+Q']\\&amp;=(P'+P) -S\qquad\qquad\quad \mbox{since $S=P'+Q'$}\\\end{align}$$Since $P'$ and $P$ are future-pointing timelike, then so is $(P'+P)$. For an elastic collision $(P'+P)$ is a multiple of $S$, because of symmetry [recall $P^2=P'^2$ for an elastic collision]... and it seems we need that $P$, $P'$, and $S$ are coplanar.From the diagram, $(P'+P)$ has magnitude $2P\cosh\theta_{PS}$, where $\theta$ is the rapidity between $P$ and $S$.So, it seems (assuming no errors in the calculation and the diagram) that since $S$ has magnitude $P\cosh\theta_{PS}+Q\cosh\theta_{QS}$, then, for an elastic collision [with $P$, $P'$,and $S$ coplanar],$U$ is a multiple of $S$ and$U$ has magnitude $| P\cosh\theta_{PS}-Q\cosh\theta_{QS}|$, the difference of the relativistic-energies-in-the-COM-frame."" 
+ ""(The problem in the OP appears to be from Rindler, Relativity: Special, General, and Cosmological, 2ed, Exercise 6.7.)The statement""""in the CM [zero-momentum, center of momentum] frame $(P'-Q)$ has no spatial components"""" means that $(P'-Q)$ is parallel to the total-4-momentum $(P+Q)$, also $(P'+Q')$ [by conservation]. This appears to hold true when the collision is elastic.As I was writing this, I eventually arrived at a simpler solution in the end.But I've kept what I started with because it may be useful to others (as it was to me).Inspired by the Mandelstam variables ( https://en.wikipedia.org/wiki/Mandelstam_variables )(which I am learning more about)I can prove it using dot-products... but can't easily explain it in those terms... but I suspect there is a simpler method using dot-products using the 4-momenta directly... when things get sorted out.In these terms, let me define the following 4-vectors: $S=P+Q=P'+Q'$ (the total-4-momentum) ,$T=P-P'=Q'-Q$, (the 4-momentum transfer)  and$U=P-Q'=P'-Q$ (some kind of cross term),where I have used momentum conservation ($P+Q=P'+Q'$) to write the second equality in each.It's easy to show that $S\cdot T=0$ (the momentum-transfer is orthogonal to the total-momentum).What you want to show is that,for elastic collisions, $U$ is parallel to $S$ by showing that $U\cdot T=0$.(By elastic, we have, in addition to $P+Q=P'+Q'$, the conditions $P^2=P'^2$ and $Q^2=Q'^2$.)First note that 
+$$
+S^2=(P+Q)^2=P^2+2P\cdot Q+Q^2.
+$$
+Next, note that 
+$$
+S+T+U=(3P+Q-P'-Q')=2P,
+$$
+ where I invoked momentum conservation.It can be shown that $S^2+T^2+U^2=P^2+Q^2+P'^2+Q'^2$, which equals $2(P^2+Q^2)$ in the elastic case.By squaring $T+U=2P-S=P-Q$ and isolating $2T\cdot U$,I get
+$$
+\begin{align}   2 T\cdot U &amp;=P^2-2P\cdot Q+Q^2 -[T^2+U^2]\\&amp;=P^2-2P\cdot Q+Q^2 -[2(P^2+Q^2)-S^2]\\&amp;=-P^2-2P\cdot Q-Q^2 +S^2\\&amp;=0\end{align}
+$$
+There's likely a simpler calculation with dot-products [without invoking Mandelstam] which might be suggested by the following energy-momentum diagram. (update: there is)Now here's an energy-momentum diagram, which suggests a simpler geometric interpretation.The 4-vector $U=P'-Q=P'-Q_{copy}$ is shown, connecting the tip of $Q_{copy}$ to $P'$.The momentum-transfer segment $T$ (connecting A and C), which is orthogonal to the total-momentum $S$, is actually bisected by $S$ when the collision is elastic... that is when $C$ (the tip of $P'$ and the tail of $Q'$) is at the intersection of the two mass-shells determined by $P$ and $Q$. So, this means that in the zero-momentum COM frame,the spatial part of $Q$ (which is projected onto half of $T$) is equal to the spatial part of $P'$ (which is projected onto the other half of $T$). Thus, the difference in their spatial components is zero.Thus, $U\cdot T=(P'-Q)\cdot T=P'\cdot T - Q\cdot T=P'_{x,COM}-Q_{x,COM}=0$.Okay, after writing this up and thinking about it some more... Here is a simpler calculation. (I'll leave the earlier stuff up there because it may be useful. It was to me.)
+$$
+\begin{align}0&amp;\stackrel{?}{=}U\cdot T\\&amp;=(P'-Q)\cdot T\\&amp;=(P'-[P'+Q'-P])\cdot T \qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\cdot T\\&amp;=(P'+P)\cdot T-[P'+Q']\cdot T\\&amp;=(P'+P)\cdot T- \qquad 0\qquad\quad \mbox{since $S\cdot T=0$}\\&amp;=(P'+P)\cdot (P-P')\\&amp;=P'^2-P^2\\&amp;=\qquad 0 \qquad  \qquad \qquad\qquad \mbox{since $P'^2=P^2$ for an elastic collision}\\\end{align}
+$$
+One more update. I think the following variant of the last calculation constructs $U$ as a multiple of $S$:
+$$
+\begin{align}U&amp;=(P'-Q)\\&amp;=(P'-[P'+Q'-P])\qquad \mbox{invoking conservation}\\&amp;=(P'+P-[P'+Q'])\\&amp;=(P'+P)-[P'+Q']\\&amp;=(P'+P) -S\qquad\qquad\quad \mbox{since $S=P'+Q'$}\\\end{align}
+$$
+Since $P'$ and $P$ are future-pointing timelike, then so is $(P'+P)$. For an elastic collision $(P'+P)$ is a multiple of $S$, because of symmetry [recall $P^2=P'^2$ for an elastic collision]... and it seems we need that $P$, $P'$, and $S$ are coplanar.From the diagram, $(P'+P)$ has magnitude $2P\cosh\theta_{PS}$, where $\theta$ is the rapidity between $P$ and $S$.So, it seems (assuming no errors in the calculation and the diagram) that since $S$ has magnitude $P\cosh\theta_{PS}+Q\cosh\theta_{QS}$, then, for an elastic collision [with $P$, $P'$,and $S$ coplanar],$U$ is a multiple of $S$ and$U$ has magnitude $| P\cosh\theta_{PS}-Q\cosh\theta_{QS}|$, the difference of the relativistic-energies-in-the-COM-frame."" 
 
 ---
 
